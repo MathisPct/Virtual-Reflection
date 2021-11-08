@@ -41,34 +41,6 @@ public class Robot : MonoBehaviour, IAwareness
     void Update()
     {
         TranslatePlayerRotation();
-        //if (Input.GetKey(KeyCode.Space))
-        //{
-        //    wheelbackleft.brakeTorque = BreakForce;
-        //    wheelbackright.brakeTorque = BreakForce;
-        //}
-        //if (Input.GetKeyUp(KeyCode.Space))
-        //{
-        //    wheelbackleft.brakeTorque = 0;
-        //    wheelbackright.brakeTorque = 0;
-        //}
-        //if (Input.GetAxis("Vertical") == 0)
-        //{
-        //    if (wheelbackleft.brakeTorque <= BreakForce && wheelbackright.brakeTorque <= BreakForce)
-        //    {
-        //        wheelbackleft.brakeTorque += friction * Time.deltaTime * BreakForce;
-        //        wheelbackright.brakeTorque += friction * Time.deltaTime * BreakForce;
-        //    }
-        //    else
-        //    {
-        //        wheelbackleft.brakeTorque = BreakForce;
-        //        wheelbackright.brakeTorque = BreakForce;
-        //    }
-        //}
-        //else
-        //{
-        //    wheelbackleft.brakeTorque = 0;
-        //    wheelbackright.brakeTorque = 0;
-        //}
     }
 
     /// <summary>
@@ -78,14 +50,17 @@ public class Robot : MonoBehaviour, IAwareness
     {
         if (CanMove)
         {
-            car.transform.Translate(this.direction * 0.005f);
-            this.transform.Rotate(Vector3.up * SteerForce * Time.deltaTime * headPlayer.transform.rotation.y, Space.World);
+            Vector3 sameRotationAsPlayer = new Vector3(this.transform.eulerAngles.x, headPlayer.transform.eulerAngles.y, this.transform.eulerAngles.z);
+            this.transform.rotation = Quaternion.Euler(sameRotationAsPlayer);
         }
     }
 
-    public GameObject GetGameObject()
+    private void TranslatePlayerMove()
     {
-        return gameObject;
+        if (CanMove)
+        {
+            car.transform.Translate(this.direction * 0.005f);
+        }
     }
 
     public void TeleportationBehaviour()

@@ -102,7 +102,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8363304985046082353}
-  - component: {fileID: 8797537850408944820}
+  - component: {fileID: 3965550085991875565}
   m_Layer: 0
   m_Name: Anchor
   m_TagString: Untagged
@@ -125,7 +125,7 @@ Transform:
   m_Father: {fileID: 8500148434960417182}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &8797537850408944820
+--- !u!114 &3965550085991875565
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -134,7 +134,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1521148011472554561}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7e2f4617667341945b5a7756e14b62d0, type: 3}
+  m_Script: {fileID: 11500000, guid: c39976b40c422974e860b60be11e08d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_InteractionManager: {fileID: 0}
@@ -198,7 +198,7 @@ MonoBehaviour:
   m_TeleportationProvider: {fileID: 0}
   m_MatchOrientation: 2
   m_TeleportTrigger: 0
-  m_TeleportAnchorTransform: {fileID: 8363304985046082353}
+  teleportationManager: {fileID: 0}
 --- !u!1 &4805750119689255883
 GameObject:
   m_ObjectHideFlags: 0

@@ -233,11 +233,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0829bfad87c303742b4cb1db73ddf295, type: 3}
---- !u!1 &156433239 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4805750119689255883, guid: 173f1f3d6f439e84ebc2a875672d2b4d, type: 3}
-  m_PrefabInstance: {fileID: 1523658160}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &199939730 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6598815579406187027, guid: 9f5a24a380916d14db9775daab4fe333, type: 3}
@@ -1838,6 +1833,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3965550085991875565, guid: 173f1f3d6f439e84ebc2a875672d2b4d, type: 3}
+      propertyPath: teleportationManager
+      value: 
+      objectReference: {fileID: 1579116635}
     - target: {fileID: 4805750119689255883, guid: 173f1f3d6f439e84ebc2a875672d2b4d, type: 3}
       propertyPath: m_Name
       value: SecurityCamRig
@@ -1952,8 +1951,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   teleportableObjects:
+  - {fileID: 4805750119689255883, guid: 173f1f3d6f439e84ebc2a875672d2b4d, type: 3}
   - {fileID: 1506567866}
-  - {fileID: 156433239}
 --- !u!114 &1787134957 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1660532894928375257, guid: da3f900e47a56b447a73aab13eb30ae5, type: 3}
@@ -1972,6 +1971,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3965550085991875565, guid: 173f1f3d6f439e84ebc2a875672d2b4d, type: 3}
+      propertyPath: teleportationManager
+      value: 
+      objectReference: {fileID: 1579116635}
     - target: {fileID: 4805750119689255883, guid: 173f1f3d6f439e84ebc2a875672d2b4d, type: 3}
       propertyPath: m_Name
       value: SecurityCamRig (2)
@@ -2160,6 +2163,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3965550085991875565, guid: 173f1f3d6f439e84ebc2a875672d2b4d, type: 3}
+      propertyPath: teleportationManager
+      value: 
+      objectReference: {fileID: 1579116635}
     - target: {fileID: 4805750119689255883, guid: 173f1f3d6f439e84ebc2a875672d2b4d, type: 3}
       propertyPath: m_Name
       value: SecurityCamRig (1)

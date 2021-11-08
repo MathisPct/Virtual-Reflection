@@ -26,25 +26,24 @@ namespace Assets.Scripts.XRExtension
         public GameObject ActualObjectPlayerTeleportIn { get => actualObjectPlayerTeleportIn; set => actualObjectPlayerTeleportIn = value; }
 
         /// <summary>
-        /// Comportement de la téléportation. Active lorsque le joueur arrive sur 
-        /// un élément sur lequel il peut se téléporter
+        /// Gère le comportement d'un objet lorsque le joueur se téléporte dessus
         /// </summary>
         public void TeleportationBehaviour()
         {
-            foreach(var teleportableObject in teleportableObjects)
+            if (IsGameObjectAwareness(actualObjectPlayerTeleportIn))
             {
-                var teleportable = teleportableObject.GetComponent<IAwareness>();
-                if (teleportable == null) continue;
-                if(teleportable.GetGameObject() == actualObjectPlayerTeleportIn)
-                {
-                    lastObjectPlayerTeleportIn = actualObjectPlayerTeleportIn;
-                    teleportable.TeleportationBehaviour();
-                }
-                if(actualObjectPlayerTeleportIn != lastObjectPlayerTeleportIn)
-                {
-                    teleportable.NotTeleportationBehaviour();
-                }
+                lastObjectPlayerTeleportIn = actualObjectPlayerTeleportIn;
+                actualObjectPlayerTeleportIn.GetComponent<IAwareness>().TeleportationBehaviour();
             }
+            if(actualObjectPlayerTeleportIn != lastObjectPlayerTeleportIn)
+            {
+                if(lastObjectPlayerTeleportIn != null) lastObjectPlayerTeleportIn.GetComponent<IAwareness>().NotTeleportationBehaviour();
+            }
+        }
+
+        private bool IsGameObjectAwareness(GameObject gameObject)
+        {
+            return teleportableObjects.Contains(gameObject);
         }
 
         public void Update()

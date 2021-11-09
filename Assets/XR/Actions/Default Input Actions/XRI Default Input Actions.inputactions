@@ -44,6 +44,17 @@
                     "action": "Rotation",
                     "isComposite": false,
                     "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "a97df1e7-209c-465a-952b-f818b51f4686",
+                    "path": "<OpenVRHMD>/centerEyeRotation",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Rotation",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 }
             ]
         },
@@ -812,6 +823,17 @@
                     "name": "",
                     "id": "cc1f17ac-e863-44d8-9118-11a5beb13fe7",
                     "path": "<Keyboard>/#(c)",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Select",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "c9222595-1429-49e6-ab77-58d8913f4552",
+                    "path": "<ViveController>/select",
                     "interactions": "",
                     "processors": "",
                     "groups": "",

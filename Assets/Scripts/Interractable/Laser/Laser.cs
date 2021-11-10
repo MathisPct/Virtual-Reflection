@@ -45,7 +45,7 @@ public class Laser : MonoBehaviour, ILaser
 
             if (isMirrorCollided(hit) && bounceCount <= maxBounces)
             {
-                CastLaser2(position, direction);
+                CastLaser(position, direction);
             }
             else
             {

@@ -9,8 +9,8 @@ namespace Assets.Scripts.TeleportationManager
 {
     public interface IAwareness
     {
-        void TeleportationBehaviour();
+        void BehaviourWhenPlayerEnter();
 
-        void NotTeleportationBehaviour();
+        void BehaviourWhenPlayerExit();
     }
 }

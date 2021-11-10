@@ -33,11 +33,11 @@ namespace Assets.Scripts.XRExtension
             if (IsGameObjectAwareness(actualObjectPlayerTeleportIn))
             {
                 lastObjectPlayerTeleportIn = actualObjectPlayerTeleportIn;
-                actualObjectPlayerTeleportIn.GetComponent<IAwareness>().TeleportationBehaviour();
+                actualObjectPlayerTeleportIn.GetComponent<IAwareness>().BehaviourWhenPlayerEnter();
             }
             if(actualObjectPlayerTeleportIn != lastObjectPlayerTeleportIn)
             {
-                if(lastObjectPlayerTeleportIn != null) lastObjectPlayerTeleportIn.GetComponent<IAwareness>().NotTeleportationBehaviour();
+                if(lastObjectPlayerTeleportIn != null) lastObjectPlayerTeleportIn.GetComponent<IAwareness>().BehaviourWhenPlayerExit();
             }
         }
 

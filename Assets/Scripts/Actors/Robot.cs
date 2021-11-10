@@ -10,19 +10,21 @@ using UnityEngine.XR.Interaction.Toolkit;
 
 public class Robot : MonoBehaviour, IAwareness
 {
-
-    public float MotorForce, SteerForce, BreakForce, friction;
-    public WheelCollider front_L_Wheel, front_R_wheel, wheelbackleft, wheelbackright;
-    public GameObject car;
+    [SerializeField] private GameObject robotGameObject;
     [SerializeField] private InputActionReference inputActionReference;
     [SerializeField]private Vector3 direction;
     [SerializeField] private Camera headPlayer;
     private TeleportAwareness teleportationAnchor;
     [SerializeField]private TeleportationManager teleportationManager;
     
-    private bool canMove = false;
-
-    public bool CanMove { get => canMove; set => canMove = value; }
+    /// <summary>
+    /// Robot can move when player move
+    /// </summary>
+    private bool canMoveWhenPlayerMove = false;
+    /// <summary>
+    /// Robot can rotate when player move
+    /// </summary>
+    private bool canRotateWhenPlayerRotate = false;
 
     void Awake()
     {
@@ -48,7 +50,7 @@ public class Robot : MonoBehaviour, IAwareness
     /// </summary>
     private void TranslatePlayerRotation()
     {
-        if (CanMove)
+        if (canRotateWhenPlayerRotate)
         {
             Vector3 sameRotationAsPlayer = new Vector3(this.transform.eulerAngles.x, headPlayer.transform.eulerAngles.y, this.transform.eulerAngles.z);
             this.transform.rotation = Quaternion.Euler(sameRotationAsPlayer);
@@ -57,21 +59,23 @@ public class Robot : MonoBehaviour, IAwareness
 
     private void TranslatePlayerMove()
     {
-        if (CanMove)
+        if (canMoveWhenPlayerMove)
         {
-            car.transform.Translate(this.direction * 0.005f);
+            robotGameObject.transform.Translate(this.direction * 0.005f);
         }
     }
 
-    public void TeleportationBehaviour()
+    public void BehaviourWhenPlayerEnter()
     {
-        CanMove = true;
+        canMoveWhenPlayerMove = true;
+        canRotateWhenPlayerRotate = true;
         Debug.Log("Player can move in robot");
     }
 
-    public void NotTeleportationBehaviour()
+    public void BehaviourWhenPlayerExit()
     {
-        CanMove = false;
+        canMoveWhenPlayerMove = false;
+        canRotateWhenPlayerRotate = false;
         Debug.Log("Player can't move in robot");
     }
 }

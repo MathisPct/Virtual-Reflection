@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Miror : Activable
 {
-    private ISensor sensor;
+    [SerializeField] private ISensor sensor;
 
     void Awake()
     {

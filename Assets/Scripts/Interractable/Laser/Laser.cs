@@ -3,76 +3,88 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
-public class Laser : MonoBehaviour, ILaser, IStartable, IAwakable
+public class Laser : MonoBehaviour, ILaser
 {
-    private int maxBounces = 10;
+    private int maxBounces = 3;
+    private int maxDistance = 50;
+    [SerializeField] private int bounceCount = 0;
     [SerializeField] private LineRenderer laser;
     [SerializeField] private Transform startPoint;
     [SerializeField] private bool ReflectOnlyMirror = true;
 
-    public delegate void LaserSensorHitDelegate();
-    public event Action<LaserSensor> onLaserSensorHit;
+    [SerializeField] private List<GameObject> objectsCollided = new List<GameObject>();
+
+    public delegate void ObjectHitDelegate();
+    public event Action<List<GameObject>> OnLaserColliding;
 
     void Awake()
-    {
-        OnAwake();
-    }
-    // Start is called before the first frame update
-    void Start()
-    {
-        OnStart();
-    }
-
-    public void OnAwake()
     {
         laser = GetComponent<LineRenderer>();
     }
 
-    public void OnStart()
-    {
-        laser.positionCount = maxBounces + 1;
-    }
 
     public virtual void CastLaser(Vector3 position, Vector3 direction)
     {
-        laser.SetPosition(0, startPoint.position);
-        bool rayHitSomething = false;
+        InitialLaserRenderingPosition();
 
-        for (int i = 0; i < maxBounces; i++)
+        RaycastHit hit;
+        Ray ray = new Ray(position, direction);
+
+        bool rayHitSomething = Physics.Raycast(ray, out hit, maxDistance, 1);
+        AddToCollidedObjectsList(hit);
+
+        if (rayHitSomething)
         {
-            Ray ray = new Ray(position, direction);
-            RaycastHit hit;
-            rayHitSomething = Physics.Raycast(ray, out hit, 300, 1);
-            if (rayHitSomething)
+            bounceCount++;
+            ObjectCollision(objectsCollided); //utile pour déclencher l'évenement de collision d'object
+
+            position = hit.point;
+            direction = Vector3.Reflect(direction, hit.normal);
+            laser.positionCount = laser.positionCount + 1;
+            laser.SetPosition(bounceCount, hit.point);
+
+            if (isMirrorCollided(hit) && bounceCount <= maxBounces)
             {
-                checkSensorCollision(hit);
-
-                position = hit.point;
-                direction = Vector3.Reflect(direction, hit.normal);
-                laser.SetPosition(i + 1, hit.point);
-
-                //Kill laser bounces
-                if (!isMirrorCollided(hit) && ReflectOnlyMirror)
-                {
-                    for (int j = (i + 1); j <= maxBounces; j++)
-                    {
-                        laser.SetPosition(j, hit.point);
-                    }
-                    break;
-                }
+                CastLaser2(position, direction);
             }
             else
             {
                 //points forward in case nothing is collided
-                laser.SetPosition(i + 1, direction * 500);
+                laser.SetPosition(bounceCount + 1, hit.point);
             }
+        }
+        else
+        {
+            //points forward in case nothing is collided
+            laser.SetPosition(bounceCount + 1, direction * maxDistance);
+        }
+    }
+
+    private void InitialLaserRenderingPosition()
+    {
+        if (bounceCount == 0)
+        {
+            laser.SetPosition(bounceCount, startPoint.position);
+        }
+    }
+
+    private void AddToCollidedObjectsList(RaycastHit hit)
+    {
+        var objectToAdd = hit.transform.gameObject;
+        if (!objectsCollided.Contains(objectToAdd))
+        {
+            objectsCollided.Add(objectToAdd);
         }
     }
 
     // Update is called once per frame
     void Update()
     {
+        //CastLaser(transform.position, transform.forward);
+        bounceCount = 0;
+        laser.positionCount = bounceCount + 2;
         CastLaser(transform.position, transform.forward);
+        objectsCollided.Clear();
     }
 
     private bool isMirrorCollided(RaycastHit hit)
@@ -80,23 +92,12 @@ public class Laser : MonoBehaviour, ILaser, IStartable, IAwakable
         return hit.transform.CompareTag("Mirror");
     }
 
-    private LaserSensor LaserSensorCollided(RaycastHit hit)
+    /// <summary>
+    /// Cette méthode notifie tout les abonnés de l'évenement OnObjectHit quel object a été touché par le laser
+    /// </summary>
+    /// <param name="hit"></param>
+    private void ObjectCollision(List<GameObject> objectsCollidedByLaser)
     {
-        LaserSensor sensor = null;
-        if (hit.transform.gameObject.GetComponent<LaserSensor>())
-        {
-            sensor = hit.transform.gameObject.GetComponent<LaserSensor>();
-        }
-        return sensor;
+        OnLaserColliding(objectsCollidedByLaser);
     }
-
-    private void checkSensorCollision(RaycastHit hit)
-    {
-        if(LaserSensorCollided(hit) != null)
-        {
-            onLaserSensorHit(LaserSensorCollided(hit));
-        }
-    }
-
-
 }

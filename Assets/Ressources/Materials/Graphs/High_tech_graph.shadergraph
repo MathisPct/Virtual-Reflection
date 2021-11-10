@@ -931,7 +931,7 @@
     "m_Type": "UnityEditor.ShaderGraph.Vector4MaterialSlot",
     "m_ObjectId": "499b294c976d4346be40a01e15999fc1",
     "m_Id": 0,
-    "m_DisplayName": "Inject Color",
+    "m_DisplayName": "InjectColor",
     "m_SlotType": 1,
     "m_Hidden": false,
     "m_ShaderOutputName": "Out",
@@ -1299,7 +1299,7 @@
     "m_Guid": {
         "m_GuidSerialized": "43a04496-fcfa-40dd-b477-0c22d5b602d5"
     },
-    "m_Name": "Inject Color",
+    "m_Name": "InjectColor",
     "m_DefaultReferenceName": "Color_7147388373dd4996add5d395c08e23ec",
     "m_OverrideReferenceName": "",
     "m_GeneratePropertyBlock": true,

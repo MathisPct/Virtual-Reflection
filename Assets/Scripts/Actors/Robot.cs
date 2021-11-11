@@ -12,9 +12,12 @@ public class Robot : MonoBehaviour, IAwareness, IControlable
 {
     [SerializeField] private GameObject robotGameObject;
     [SerializeField] private Camera headPlayer;
-    [SerializeField]private TeleportationManager teleportationManager;
-    [SerializeField] private float speedMovement = 1f;
-    
+    [SerializeField] private TeleportationManager teleportationManager;
+    [SerializeField] private float speedMovement = 2f;
+    private CharacterController controller;
+    private Vector3 vectorMovement;
+    public Vector3 VectorMovement { get => vectorMovement; set => vectorMovement = value; }
+
     /// <summary>
     /// Robot can move when player move
     /// </summary>
@@ -29,11 +32,16 @@ public class Robot : MonoBehaviour, IAwareness, IControlable
 
     void Awake()
     {
+        controller = GetComponent<CharacterController>();
     }
 
     void Update()
     {
         TranslatePlayerRotation();
+        if (canMoveWhenPlayerMove)
+        {
+            controller.Move(VectorMovement * speedMovement * Time.deltaTime);
+        }
     }
 
     /// <summary>
@@ -50,23 +58,22 @@ public class Robot : MonoBehaviour, IAwareness, IControlable
 
     public void Move(Vector3 direction)
     {
-        Vector3 move = transform.right * direction.x + transform.forward * direction.z;
-        this.robotGameObject.transform.Translate(move * speedMovement * Time.deltaTime);
+        VectorMovement = direction;
     }
 
     public void BehaviourWhenPlayerEnter()
     {
+        Debug.Log("Player can move in robot");
         canMoveWhenPlayerMove = true;
         canRotateWhenPlayerRotate = true;
         OnControl?.Invoke();
-        Debug.Log("Player can move in robot");
     }
 
     public void BehaviourWhenPlayerExit()
     {
+        Debug.Log("Player can't move in robot");
         canMoveWhenPlayerMove = false;
         canRotateWhenPlayerRotate = false;
         OnDiscontrol?.Invoke();
-        Debug.Log("Player can't move in robot");
     }
 }

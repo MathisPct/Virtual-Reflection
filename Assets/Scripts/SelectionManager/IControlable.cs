@@ -7,9 +7,11 @@ using UnityEngine.XR.Interaction.Toolkit;
 
 namespace Assets.Scripts.SelectionManager
 {
+    public delegate void ControlHandler();
+    public delegate void DiscontrolHandler();
     public interface IControlable
     {
-        void OnControl(SelectEnterEventArgs args);
-        void OnDiscontrol();
+        event ControlHandler OnControl;
+        event DiscontrolHandler OnDiscontrol;
     }
 }

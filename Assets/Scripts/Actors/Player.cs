@@ -9,34 +9,44 @@ using UnityEngine.InputSystem;
 
 namespace Assets.Scripts
 {
-    public class Player
+    public class Player: MonoBehaviour
     {
         /// <summary>
         /// Rig where player is contain
         /// </summary>
         [SerializeField] private XRRig rigVR;
-        [SerializeField] private InputActionReference inputActionReference;
+        [SerializeField] private InputActionReference joystickInput;
         [SerializeField] private Robot robot;
         private Vector3 direction;
 
         void Awake()
         {
-            inputActionReference.action.started += OnMovementChange;
-            inputActionReference.action.canceled += OnMovementChange;
+            robot.OnControl += CanMoveRobot;
+            robot.OnDiscontrol += CantMoveRobot;
         }
 
         public void OnMovementChange(InputAction.CallbackContext callbackContext)
         {
-            if (robot.CanMove)
-            {
-                Vector2 directionAction = callbackContext.ReadValue<Vector2>();
-                direction = new Vector3(directionAction.x, 0, directionAction.y);
-            }
+            Vector2 directionAction = callbackContext.ReadValue<Vector2>();
+            direction = new Vector3(directionAction.x, 0, directionAction.y);
+            ApplyMovementToRobot(direction);
         }
 
-        public void Move()
+        public void CanMoveRobot()
         {
-           
+            joystickInput.action.started += OnMovementChange;
+            joystickInput.action.canceled += OnMovementChange;
+        }
+
+        private void ApplyMovementToRobot(Vector3 direction)
+        {
+            robot.Move(direction);
+        }
+
+        public void CantMoveRobot()
+        {
+            joystickInput.action.started -= OnMovementChange;
+            joystickInput.action.canceled -= OnMovementChange;
         }
 
         void Update()

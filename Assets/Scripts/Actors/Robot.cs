@@ -8,14 +8,12 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.XR.Interaction.Toolkit;
 
-public class Robot : MonoBehaviour, IAwareness
+public class Robot : MonoBehaviour, IAwareness, IControlable
 {
     [SerializeField] private GameObject robotGameObject;
-    [SerializeField] private InputActionReference inputActionReference;
-    [SerializeField]private Vector3 direction;
     [SerializeField] private Camera headPlayer;
-    private TeleportAwareness teleportationAnchor;
     [SerializeField]private TeleportationManager teleportationManager;
+    [SerializeField] private float speedMovement = 1f;
     
     /// <summary>
     /// Robot can move when player move
@@ -26,18 +24,11 @@ public class Robot : MonoBehaviour, IAwareness
     /// </summary>
     private bool canRotateWhenPlayerRotate = false;
 
+    public event ControlHandler OnControl;
+    public event DiscontrolHandler OnDiscontrol;
+
     void Awake()
     {
-        teleportationAnchor = GetComponent<TeleportAwareness>();
-        inputActionReference.action.started += Movement;
-        inputActionReference.action.canceled += Movement;
-    }
-
-    private void Movement(InputAction.CallbackContext obj)
-    {
-        Vector2 directionAction = obj.ReadValue<Vector2>();
-        direction = new Vector3(directionAction.x, 0, directionAction.y);
-        Debug.Log(direction);
     }
 
     void Update()
@@ -57,18 +48,17 @@ public class Robot : MonoBehaviour, IAwareness
         }
     }
 
-    private void TranslatePlayerMove()
+    public void Move(Vector3 direction)
     {
-        if (canMoveWhenPlayerMove)
-        {
-            robotGameObject.transform.Translate(this.direction * 0.005f);
-        }
+        Vector3 move = transform.right * direction.x + transform.forward * direction.z;
+        this.robotGameObject.transform.Translate(move * speedMovement * Time.deltaTime);
     }
 
     public void BehaviourWhenPlayerEnter()
     {
         canMoveWhenPlayerMove = true;
         canRotateWhenPlayerRotate = true;
+        OnControl?.Invoke();
         Debug.Log("Player can move in robot");
     }
 
@@ -76,6 +66,7 @@ public class Robot : MonoBehaviour, IAwareness
     {
         canMoveWhenPlayerMove = false;
         canRotateWhenPlayerRotate = false;
+        OnDiscontrol?.Invoke();
         Debug.Log("Player can't move in robot");
     }
 }

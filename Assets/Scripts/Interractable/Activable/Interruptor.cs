@@ -20,9 +20,10 @@ public class Interruptor : Activable
 
     public bool AreInputsActivated()
     {
-        bool areInputsActivated = true;
+        bool areInputsActivated = false;
         if(activables != null && activables.Length > 0)
         {
+            areInputsActivated = true;
             foreach (Activable a in activables)
             {
                 if (a != null)

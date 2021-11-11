@@ -11,7 +11,7 @@ public class Activable : MonoBehaviour, IActivable
     //[SerializeField] private bool isActivableOnce;
 
     #region Propreties
-    public bool IsActivated { get => isActivated; set => isActivated = value; }
+    public virtual bool IsActivated { get => isActivated; set => isActivated = value; }
 
     public void ActivationBehavior()
     {

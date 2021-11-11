@@ -2,9 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LaserSensor : MonoBehaviour, ISensor
+public class LaserSensor : Activable, ISensor
 {
     [SerializeField] private bool hit;
+
+    public override bool IsActivated { get => IsRecepting; set => base.IsActivated = value; }
 
     public bool IsRecepting
     {

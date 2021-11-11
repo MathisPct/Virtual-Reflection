@@ -771,6 +771,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5871071265383555400, guid: d50677ea5645c8b4aab2126a83856963, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6874969623860131152, guid: d50677ea5645c8b4aab2126a83856963, type: 3}
       propertyPath: m_Name
       value: MovingTower
@@ -859,7 +863,8 @@ PrefabInstance:
       propertyPath: m_Colliders.Array.data[0]
       value: 
       objectReference: {fileID: 1506567872}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 6874969623860131154, guid: d50677ea5645c8b4aab2126a83856963, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: d50677ea5645c8b4aab2126a83856963, type: 3}
 --- !u!1 &1231841362
 GameObject:
@@ -1793,7 +1798,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1409549569}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 2.04, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 315026968}
@@ -1876,6 +1881,24 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 6874969623860131152, guid: d50677ea5645c8b4aab2126a83856963, type: 3}
   m_PrefabInstance: {fileID: 999191687}
   m_PrefabAsset: {fileID: 0}
+--- !u!143 &1506567867
+CharacterController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1506567866}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Height: 2
+  m_Radius: 0.5
+  m_SlopeLimit: 45
+  m_StepOffset: 0.3
+  m_SkinWidth: 0.08
+  m_MinMoveDistance: 0.001
+  m_Center: {x: 0, y: 0.69, z: 0}
 --- !u!114 &1506567869 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6874969623860131153, guid: d50677ea5645c8b4aab2126a83856963, type: 3}

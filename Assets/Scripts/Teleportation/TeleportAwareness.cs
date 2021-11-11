@@ -47,9 +47,10 @@ namespace Assets.Scripts.XRExtension
         {
             if (transformOfDestination == null)
                 return false;
-            ChangeGameObjectWherePlayerIs(raycastHit);
             teleportRequest.destinationPosition = transformOfDestination.position;
             teleportRequest.destinationRotation = transformOfDestination.rotation;
+            ChangeGameObjectWherePlayerIs(raycastHit);
+            teleportationManager.TeleportationBehaviour();
             return true;
         }
 

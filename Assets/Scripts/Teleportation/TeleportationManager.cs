@@ -23,34 +23,35 @@ namespace Assets.Scripts.XRExtension
 
         [SerializeField]private List<GameObject> teleportableObjects;
 
-        public GameObject ActualObjectPlayerTeleportIn { get => actualObjectPlayerTeleportIn; set => actualObjectPlayerTeleportIn = value; }
+        public GameObject ActualObjectPlayerTeleportIn { 
+            get => actualObjectPlayerTeleportIn;
+            set
+            {
+                lastObjectPlayerTeleportIn = actualObjectPlayerTeleportIn;
+                actualObjectPlayerTeleportIn = value;
+            }
+        }
 
         /// <summary>
         /// Gère le comportement d'un objet lorsque le joueur se téléporte dessus
         /// </summary>
         public void TeleportationBehaviour()
         {
+            Debug.Log("Actual object" + actualObjectPlayerTeleportIn);
+            Debug.Log("Last object" + lastObjectPlayerTeleportIn);
+            if (lastObjectPlayerTeleportIn!=null && IsGameObjectAwareness(lastObjectPlayerTeleportIn))
+            {
+                lastObjectPlayerTeleportIn?.GetComponent<IAwareness>().BehaviourWhenPlayerExit();
+            }
             if (IsGameObjectAwareness(actualObjectPlayerTeleportIn))
             {
-                lastObjectPlayerTeleportIn = actualObjectPlayerTeleportIn;
                 actualObjectPlayerTeleportIn.GetComponent<IAwareness>().BehaviourWhenPlayerEnter();
-            }
-            if(actualObjectPlayerTeleportIn != lastObjectPlayerTeleportIn)
-            {
-                if(lastObjectPlayerTeleportIn != null) lastObjectPlayerTeleportIn.GetComponent<IAwareness>().BehaviourWhenPlayerExit();
             }
         }
 
         private bool IsGameObjectAwareness(GameObject gameObject)
         {
             return teleportableObjects.Contains(gameObject);
-        }
-
-        public void Update()
-        {
-            TeleportationBehaviour();
-            Debug.Log("Actual object" + actualObjectPlayerTeleportIn);
-            Debug.Log("Last object" + lastObjectPlayerTeleportIn);
         }
     }
 }

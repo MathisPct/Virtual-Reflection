@@ -29,7 +29,7 @@
                 {
                     "name": "up",
                     "id": "eded6bd7-0624-4bb8-81cf-b3820b5d146b",
-                    "path": "<Keyboard>/leftArrow",
+                    "path": "<Keyboard>/rightArrow",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -40,7 +40,7 @@
                 {
                     "name": "down",
                     "id": "d7a35d12-28b5-465a-aff5-582e33992039",
-                    "path": "<Keyboard>/rightArrow",
+                    "path": "<Keyboard>/leftArrow",
                     "interactions": "",
                     "processors": "",
                     "groups": "",

@@ -40,7 +40,7 @@ public class Robot : MonoBehaviour, IAwareness, IControlable
         TranslatePlayerRotation();
         if (canMoveWhenPlayerMove)
         {
-            controller.Move(VectorMovement * speedMovement * Time.deltaTime);
+            controller.Move((VectorMovement.x * this.transform.forward + VectorMovement.z * this.transform.right) * speedMovement * Time.deltaTime) ;
         }
     }
 

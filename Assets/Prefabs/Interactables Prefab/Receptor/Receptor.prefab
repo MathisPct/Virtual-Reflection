@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3340806715433268608}
+  - component: {fileID: 3839864807938899083}
   m_Layer: 0
   m_Name: Receptor
   m_TagString: Untagged
@@ -33,6 +34,21 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3839864807938899083
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1234614802514095012}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf02af610279b7943a8f48770e83cc17, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isActivated: 0
+  activables:
+  - {fileID: 5954349595816728810}
 --- !u!1 &2662269339038261489
 GameObject:
   m_ObjectHideFlags: 0
@@ -46,9 +62,8 @@ GameObject:
   - component: {fileID: 8721689941686912129}
   - component: {fileID: 2106079931012577190}
   - component: {fileID: 5954349595816728810}
-  - component: {fileID: 4876532848200485550}
   m_Layer: 0
-  m_Name: Plane
+  m_Name: Sensor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -62,8 +77,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2662269339038261489}
   m_LocalRotation: {x: -0, y: -0, z: -0.70710707, w: 0.7071066}
-  m_LocalPosition: {x: -1.857, y: -0.247, z: -0.156}
-  m_LocalScale: {x: -0.0805524, y: -0.0805524, z: -0.0805524}
+  m_LocalPosition: {x: -1.81, y: -0.247, z: -0.156}
+  m_LocalScale: {x: -0.110268176, y: -0.110268176, z: -0.110268176}
   m_Children: []
   m_Father: {fileID: 3340806715433268608}
   m_RootOrder: 1
@@ -145,20 +160,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isActivated: 0
   hit: 0
---- !u!114 &4876532848200485550
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2662269339038261489}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cf02af610279b7943a8f48770e83cc17, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isActivated: 0
-  activables: []
 --- !u!1 &6818891364670841749
 GameObject:
   m_ObjectHideFlags: 0
@@ -307,7 +308,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: a68b85e283de9934388c33b577c1dff1, type: 3}
       propertyPath: m_Name
-      value: receptor
+      value: Model
+      objectReference: {fileID: 0}
+    - target: {fileID: 5503253513443342884, guid: a68b85e283de9934388c33b577c1dff1, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 117.03947
+      objectReference: {fileID: 0}
+    - target: {fileID: 5503253513443342884, guid: a68b85e283de9934388c33b577c1dff1, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 117.03947
+      objectReference: {fileID: 0}
+    - target: {fileID: 5503253513443342884, guid: a68b85e283de9934388c33b577c1dff1, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 66.4831
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a68b85e283de9934388c33b577c1dff1, type: 3}

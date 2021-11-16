@@ -9,7 +9,7 @@ public class Room : MonoBehaviour
     [SerializeField] private Room nextRoom;
     [SerializeField] private Room previousRoom;
     [SerializeField] private List<Puzzle> puzzles = new List<Puzzle>();
-
+    [SerializeField] private IShadable emissiveLightShading;
 
 
     private bool isVisited;
@@ -23,15 +23,22 @@ public class Room : MonoBehaviour
         get
         {
             bool res = false;
-            if (exitDoor != null)
+            if (puzzles != null)
             {
-
+                res = true;
+                foreach (Puzzle puzzle in puzzles)
+                {
+                    if (!puzzle.IsActivated)
+                    {
+                        res = false;
+                    }
+                }
             }
             return res;
         }
         set
         {
-            isUnlocked = value;
+            isUnlocked = value;         
         }
     }
 
@@ -41,9 +48,10 @@ public class Room : MonoBehaviour
 
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         exitDoor = GetComponentInChildren<Openable>();
+        emissiveLightShading = GetComponent<IShadable>();
     }
 
     private void OnChangingRoom()
@@ -51,6 +59,15 @@ public class Room : MonoBehaviour
 
     }
 
-
+    void Update()
+    {
+        if (IsUnlocked == true)
+        {
+            emissiveLightShading.OnColorize();
+        } else
+        {
+            emissiveLightShading.OnDecolorize();
+        }
+    }
 
 }

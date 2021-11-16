@@ -4,22 +4,30 @@ using UnityEngine;
 
 public class ColorizeActivable : MonoBehaviour, IShadable
 {
-    private Activable activable;
-    private Color defaultColor;
-    public Color DefaultColor { get => defaultColor; set => defaultColor = value; }
+    [SerializeField] private Activable activable;
+    [SerializeField] private Material emissiveMat;
+    [SerializeField] private Color emissiveColorDefault;
+    [SerializeField] private Color activatedColor;
+    private float intensity = 3f;
+
 
     public void OnColorize()
     {
-        //if (activable.IsActivated)
-        //    activable.GetComponent<Renderer>().material.color = Color.green;
-        //else
-        //    activable.GetComponent<Renderer>().material.color = defaultColor;
+
+        emissiveMat.SetColor("_EmissionColor", activatedColor* intensity);
+        //Debug.Log("OnColorize called");
+    }
+
+    public void OnDecolorize()
+    {
+        emissiveMat.SetColor("_EmissionColor", emissiveColorDefault* intensity);
+        //Debug.Log("OnDecolorize called");
     }
 
     // Start is called before the first frame update
     void Awake()
     {
-        activable = GetComponent<Activable>();
-        defaultColor = GetComponent<Renderer>().material.color;
+        activable = GetComponent<Activable>();      
     }
+
 }

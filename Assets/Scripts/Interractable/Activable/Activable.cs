@@ -6,7 +6,7 @@ public class Activable : MonoBehaviour, IActivable
 {
     protected IShadable shadable;
 
-    [SerializeField] private bool isActivated;
+    private bool isActivated;
     //[SerializeField] private bool hasBeenActivatedOnce;
     //[SerializeField] private bool isActivableOnce;
 
@@ -38,6 +38,6 @@ public class Activable : MonoBehaviour, IActivable
     void Update()
     {
         ActivationBehavior();
-        shadable.OnColorize();
+        //shadable.OnColorize();
     }
 }

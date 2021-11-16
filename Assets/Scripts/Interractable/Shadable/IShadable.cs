@@ -5,4 +5,6 @@ using UnityEngine;
 public interface IShadable
 {
     public void OnColorize();
+
+    public void OnDecolorize();
 }

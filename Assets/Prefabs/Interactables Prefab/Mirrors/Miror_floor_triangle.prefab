@@ -90,7 +90,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3204372500064057940}
   m_LocalRotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071067}
-  m_LocalPosition: {x: 5.552766, y: -0.44, z: 11.16}
+  m_LocalPosition: {x: 5.552766, y: -0.25, z: 11.16}
   m_LocalScale: {x: 100, y: 100, z: 100}
   m_Children:
   - {fileID: 4676313045841594293}
@@ -269,7 +269,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isActivated: 0
-  sensor: {fileID: 296295450387901411}
 --- !u!1 &7272178116098946229
 GameObject:
   m_ObjectHideFlags: 0

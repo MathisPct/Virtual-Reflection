@@ -2,11 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Puzzle : Activable
+public class Puzzle : MonoBehaviour, IActivable
 {
     [SerializeField] private Room room;
     [SerializeField] private List<GameObject> puzzlePieces = new List<GameObject>();
-    public override bool IsActivated { get => IsPuzzleSolved; set => base.IsActivated = value; }
+    public bool IsActivated { get => IsPuzzleSolved; }
     public bool IsPuzzleSolved 
     { get
         {
@@ -15,7 +15,7 @@ public class Puzzle : Activable
             {
                 foreach (GameObject puzzle in puzzlePieces)
                 {
-                    var selection = puzzle.GetComponent<Activable>();
+                    var selection = puzzle.GetComponent<IActivable>();
                     if (selection != null)
                     {
                         if (!selection.IsActivated)

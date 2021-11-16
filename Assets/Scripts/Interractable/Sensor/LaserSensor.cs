@@ -2,16 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LaserSensor : Activable, ISensor
+public class LaserSensor : MonoBehaviour, ISensor
 {
     [SerializeField] private bool hit;
 
-    public override bool IsActivated { get => IsRecepting; set => base.IsActivated = value; }
-
-    public bool IsRecepting
-    {
-        get => hit;
-    }
+    public bool IsRecepting { get => hit; }
 
     // Start is called before the first frame update
     void Start()

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3340806715433268608}
   - component: {fileID: 3839864807938899083}
   m_Layer: 0
-  m_Name: Receptor
+  m_Name: Interruptor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

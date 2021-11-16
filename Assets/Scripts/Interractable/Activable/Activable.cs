@@ -6,7 +6,7 @@ public class Activable : MonoBehaviour, IActivable
 {
     protected IShadable shadable;
 
-    private bool isActivated;
+    public bool isActivated;
     //[SerializeField] private bool hasBeenActivatedOnce;
     //[SerializeField] private bool isActivableOnce;
 
@@ -18,7 +18,6 @@ public class Activable : MonoBehaviour, IActivable
         
     }
 
-    //public bool IsActivableOnce { get => isActivableOnce; set => isActivableOnce = value; }
     #endregion
     void Awake()
     {

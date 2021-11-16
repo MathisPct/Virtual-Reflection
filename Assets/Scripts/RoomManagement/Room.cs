@@ -5,7 +5,7 @@ using UnityEngine;
 public class Room : MonoBehaviour
 {
     #region Attributes
-    [SerializeField] private Openable exitDoor;
+    //[SerializeField] private Openable exitDoor;
     [SerializeField] private Room nextRoom;
     [SerializeField] private Room previousRoom;
     [SerializeField] private List<Puzzle> puzzles = new List<Puzzle>();
@@ -25,14 +25,18 @@ public class Room : MonoBehaviour
             bool res = false;
             if (puzzles != null)
             {
-                res = true;
-                foreach (Puzzle puzzle in puzzles)
+                if(puzzles.Count > 0)
                 {
-                    if (!puzzle.IsActivated)
+                    res = true;
+                    foreach (Puzzle puzzle in puzzles)
                     {
-                        res = false;
+                        if (!puzzle.IsActivated)
+                        {
+                            res = false;
+                        }
                     }
                 }
+
             }
             return res;
         }
@@ -50,7 +54,7 @@ public class Room : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
-        exitDoor = GetComponentInChildren<Openable>();
+        //exitDoor = GetComponentInChildren<Openable>();
         emissiveLightShading = GetComponent<IShadable>();
     }
 

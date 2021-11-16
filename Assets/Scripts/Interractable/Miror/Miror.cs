@@ -2,13 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Miror : Activable
+public class Miror : MonoBehaviour, IActivable
 {
     [SerializeField] private ISensor sensor;
 
+    public bool IsActivated => sensor.IsRecepting;
+
     void Awake()
     {
-        var selectionSensor = GetComponent<ISensor>();
+        var selectionSensor = GetComponentInChildren<ISensor>();
         if (selectionSensor != null)
         {
             sensor = selectionSensor;
@@ -20,11 +22,5 @@ public class Miror : Activable
     void Start()
     {
 
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        IsActivated = sensor.IsRecepting;
     }
 }

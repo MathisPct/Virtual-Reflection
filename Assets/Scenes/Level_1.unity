@@ -186,7 +186,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a5f3f29f3ddd7b4e87b231aa5c88db5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  activable: {fileID: 2043722213}
+  activable: {fileID: 0}
   emissiveMat: {fileID: 2100000, guid: 833a75730432eed44af0010b254ca7f4, type: 2}
   emissiveColorDefault: {r: 0.7490196, g: 0.10744024, b: 0, a: 0}
   activatedColor: {r: 0, g: 1, b: 0.8044872, a: 0}
@@ -202,7 +202,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99a5048977c2afc4e8ce7a242a765e0e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  exitDoor: {fileID: 0}
   nextRoom: {fileID: 0}
   previousRoom: {fileID: 0}
   puzzles:
@@ -943,6 +942,11 @@ PrefabInstance:
     m_RemovedComponents:
     - {fileID: 6874969623860131154, guid: d50677ea5645c8b4aab2126a83856963, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: d50677ea5645c8b4aab2126a83856963, type: 3}
+--- !u!1 &1133766575 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2833720246840915809, guid: da3f900e47a56b447a73aab13eb30ae5, type: 3}
+  m_PrefabInstance: {fileID: 928476819}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1231841362
 GameObject:
   m_ObjectHideFlags: 0
@@ -2124,6 +2128,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7777751874565617493, guid: da3f900e47a56b447a73aab13eb30ae5, type: 3}
   m_PrefabInstance: {fileID: 928476819}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1697815994 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2833720246840915809, guid: da3f900e47a56b447a73aab13eb30ae5, type: 3}
+  m_PrefabInstance: {fileID: 649577328}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1825481136
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2687,7 +2696,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1234614802514095012, guid: e9395b7fbeac9b9438f41a8e73d09948, type: 3}
       propertyPath: m_Name
-      value: Receptor
+      value: Interruptor
       objectReference: {fileID: 0}
     - target: {fileID: 3340806715433268608, guid: e9395b7fbeac9b9438f41a8e73d09948, type: 3}
       propertyPath: m_RootOrder
@@ -2745,6 +2754,22 @@ PrefabInstance:
       propertyPath: activables.Array.data[2]
       value: 
       objectReference: {fileID: 2055451040}
+    - target: {fileID: 3839864807938899083, guid: e9395b7fbeac9b9438f41a8e73d09948, type: 3}
+      propertyPath: activableGameObjects.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3839864807938899083, guid: e9395b7fbeac9b9438f41a8e73d09948, type: 3}
+      propertyPath: activableGameObjects.Array.data[0]
+      value: 
+      objectReference: {fileID: 1697815994}
+    - target: {fileID: 3839864807938899083, guid: e9395b7fbeac9b9438f41a8e73d09948, type: 3}
+      propertyPath: activableGameObjects.Array.data[1]
+      value: 
+      objectReference: {fileID: 1133766575}
+    - target: {fileID: 3839864807938899083, guid: e9395b7fbeac9b9438f41a8e73d09948, type: 3}
+      propertyPath: activableGameObjects.Array.data[2]
+      value: 
+      objectReference: {fileID: 247370162}
     - target: {fileID: 4876532848200485550, guid: e9395b7fbeac9b9438f41a8e73d09948, type: 3}
       propertyPath: activables.Array.size
       value: 3

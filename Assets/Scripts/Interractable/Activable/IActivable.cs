@@ -4,6 +4,6 @@ using UnityEngine;
 
 public interface IActivable
 {
-    public bool IsActivated { get; set; }
+    public bool IsActivated { get; }
 
 }

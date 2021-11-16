@@ -2,39 +2,47 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Interruptor : Activable
+public class Interruptor : MonoBehaviour, IActivable
 {
-    [SerializeField] private Activable[] activables;
+    [SerializeField] private List<GameObject> activableGameObjects = new List<GameObject>();
+    [SerializeField] private ISensor sensor;
 
-    // Start is called before the first frame update
-    void Start()
+    public bool IsActivated => AreInputsActivated() && sensor.IsRecepting;
+
+
+    void Awake()
     {
-        
+        var selectionSensor = GetComponentInChildren<ISensor>();
+        if (selectionSensor != null)
+        {
+            sensor = selectionSensor;
+            Debug.Log("Sensor of interruptor found");
+        }
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        IsActivated = AreInputsActivated();
-    }
-
     public bool AreInputsActivated()
     {
         bool areInputsActivated = false;
-        if(activables != null && activables.Length > 0)
+
+        if (activableGameObjects != null && activableGameObjects.Count > 0)
         {
             areInputsActivated = true;
-            foreach (Activable a in activables)
+            foreach (GameObject gameObject in activableGameObjects)
             {
-                if (a != null)
+                if(gameObject != this.gameObject)
                 {
-                    if (!a.IsActivated)
+                    IActivable selectionIActivable = gameObject.GetComponent<IActivable>();
+                    if (selectionIActivable != null)
                     {
-                        areInputsActivated = false;
+                        if (!selectionIActivable.IsActivated)
+                        {
+                            areInputsActivated = false;
+                        }
                     }
                 }
             }
+            
         }
         return areInputsActivated;
     }
+
 }

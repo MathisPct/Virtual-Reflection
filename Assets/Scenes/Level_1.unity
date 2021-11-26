@@ -229,6 +229,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3746562353421430944, guid: 0829bfad87c303742b4cb1db73ddf295, type: 3}
+      propertyPath: teleportationManager
+      value: 
+      objectReference: {fileID: 1579116635}
     - target: {fileID: 7017038693388623005, guid: 0829bfad87c303742b4cb1db73ddf295, type: 3}
       propertyPath: m_LocalPosition.y
       value: 4.19
@@ -2123,6 +2127,7 @@ MonoBehaviour:
   teleportableObjects:
   - {fileID: 4805750119689255883, guid: 173f1f3d6f439e84ebc2a875672d2b4d, type: 3}
   - {fileID: 1506567866}
+  - {fileID: 8002592181572923257, guid: 0829bfad87c303742b4cb1db73ddf295, type: 3}
 --- !u!4 &1649981395 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7777751874565617493, guid: da3f900e47a56b447a73aab13eb30ae5, type: 3}

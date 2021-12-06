@@ -14,12 +14,12 @@ namespace Assets.Scripts.XRExtension
         /// Object where the player in teleport 
         /// Is modify when player teleport in object 
         /// </summary>
-        private GameObject actualObjectPlayerTeleportIn;
+        [SerializeField] private GameObject actualObjectPlayerTeleportIn;
 
         /// <summary>
         /// Last object which received player 
         /// </summary>
-        private GameObject lastObjectPlayerTeleportIn;
+        [SerializeField] private GameObject lastObjectPlayerTeleportIn;
 
         [SerializeField]private List<GameObject> teleportableObjects;
 

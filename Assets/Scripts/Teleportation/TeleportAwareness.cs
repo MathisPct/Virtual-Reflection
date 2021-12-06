@@ -49,7 +49,6 @@ namespace Assets.Scripts.XRExtension
                 return false;
             teleportRequest.destinationPosition = transformOfDestination.position;
             teleportRequest.destinationRotation = transformOfDestination.rotation;
-            ChangeGameObjectWherePlayerIs(raycastHit);
             teleportationManager.AddToHistory(GetTeleportAwarnessFromRay(raycastHit));
             teleportationManager.TeleportationBehaviour();
             return true;
@@ -60,19 +59,5 @@ namespace Assets.Scripts.XRExtension
             var teleportAware = raycastHit.collider.gameObject.GetComponentInParent<TeleportAwareness>();
             return teleportAware;
         } 
-
-        private void ChangeGameObjectWherePlayerIs(RaycastHit raycastHit)
-        {
-            //var newActual = raycastHit.collider.gameObject;
-            var newActual = GetTeleportAwarnessFromRay(raycastHit);
-            if(newActual != null)
-            {
-                teleportationManager.ActualObjectPlayerTeleportIn = newActual.gameObject;
-            } else
-            {
-                teleportationManager.ActualObjectPlayerTeleportIn = raycastHit.collider.gameObject;
-            }
-            
-        }
     }
 }

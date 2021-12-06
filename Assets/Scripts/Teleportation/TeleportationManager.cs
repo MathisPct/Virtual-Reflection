@@ -23,6 +23,19 @@ namespace Assets.Scripts.XRExtension
 
         [SerializeField]private List<GameObject> teleportableObjects;
 
+        [SerializeField] private List<TeleportAwareness> teleportHistory;
+
+        void Awake()
+        {
+            teleportHistory = new List<TeleportAwareness>();
+            //ADD SPAWN TO HISTORY
+            var selection = FindObjectOfType<Spawn>();
+            if(selection != null)
+            {
+                teleportHistory.Add(selection);
+            }           
+        }
+
         public GameObject ActualObjectPlayerTeleportIn { 
             get => actualObjectPlayerTeleportIn;
             set
@@ -37,8 +50,6 @@ namespace Assets.Scripts.XRExtension
         /// </summary>
         public void TeleportationBehaviour()
         {
-            Debug.Log("Actual object" + actualObjectPlayerTeleportIn);
-            Debug.Log("Last object" + lastObjectPlayerTeleportIn);
             if (lastObjectPlayerTeleportIn!=null && IsGameObjectAwareness(lastObjectPlayerTeleportIn))
             {
                 lastObjectPlayerTeleportIn?.GetComponent<IAwareness>().BehaviourWhenPlayerExit();
@@ -53,5 +64,14 @@ namespace Assets.Scripts.XRExtension
         {
             return teleportableObjects.Contains(gameObject);
         }
+
+        internal void AddToHistory(TeleportAwareness teleportAwareness)
+        {
+            if(teleportAwareness != null)
+            {
+                teleportHistory.Add(teleportAwareness);
+            }
+        }
+
     }
 }

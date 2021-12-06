@@ -26,6 +26,16 @@ namespace Assets.Scripts
             robot.OnDiscontrol += CantMoveRobot;
         }
 
+        private void Start()
+        {
+            var spawn = FindObjectOfType<Spawn>();
+            if (spawn != null)
+            {
+                this.transform.position = spawn.gameObject.transform.position;
+            }
+            
+        }
+
         public void InputMovementRobot(InputAction.CallbackContext callbackContext)
         {
             Vector2 directionAction = callbackContext.ReadValue<Vector2>();

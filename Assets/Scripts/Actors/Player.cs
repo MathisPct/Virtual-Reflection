@@ -32,6 +32,7 @@ namespace Assets.Scripts
             if (spawn != null)
             {
                 this.transform.position = spawn.gameObject.transform.position;
+                this.transform.rotation = spawn.gameObject.transform.rotation;
             }
             
         }

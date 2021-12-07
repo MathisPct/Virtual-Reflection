@@ -49,14 +49,15 @@ namespace Assets.Scripts.XRExtension
                 return false;
             teleportRequest.destinationPosition = transformOfDestination.position;
             teleportRequest.destinationRotation = transformOfDestination.rotation;
-            ChangeGameObjectWherePlayerIs(raycastHit);
+            teleportationManager.AddToHistory(GetTeleportAwarnessFromRay(raycastHit));
             teleportationManager.TeleportationBehaviour();
             return true;
         }
 
-        private void ChangeGameObjectWherePlayerIs(RaycastHit raycastHit)
+        private TeleportAwareness GetTeleportAwarnessFromRay(RaycastHit raycastHit)
         {
-            teleportationManager.ActualObjectPlayerTeleportIn = raycastHit.collider.gameObject;
-        }
+            var teleportAware = raycastHit.collider.gameObject.GetComponentInParent<TeleportAwareness>();
+            return teleportAware;
+        } 
     }
 }

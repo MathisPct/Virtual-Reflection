@@ -346,17 +346,6 @@
                 },
                 {
                     "name": "",
-                    "id": "71a4d23f-3e9a-4513-923b-ba388c5e84bf",
-                    "path": "<XRController>{LeftHand}/gripPressed",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Generic XR Controller",
-                    "action": "Select",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "e96cfa84-b972-4215-8650-3d22121635ce",
                     "path": "<Keyboard>/#(c)",
                     "interactions": "",
@@ -810,17 +799,6 @@
                 },
                 {
                     "name": "",
-                    "id": "1ce80054-410d-4112-a332-50faa7fb4f23",
-                    "path": "<XRController>{RightHand}/gripPressed",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Generic XR Controller",
-                    "action": "Select",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "cc1f17ac-e863-44d8-9118-11a5beb13fe7",
                     "path": "<Keyboard>/#(c)",
                     "interactions": "",
@@ -833,7 +811,7 @@
                 {
                     "name": "",
                     "id": "c9222595-1429-49e6-ab77-58d8913f4552",
-                    "path": "<ViveController>/select",
+                    "path": "<ViveController>{RightHand}/triggerPressed",
                     "interactions": "",
                     "processors": "",
                     "groups": "",

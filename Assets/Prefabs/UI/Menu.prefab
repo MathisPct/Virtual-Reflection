@@ -199,7 +199,20 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 4501563311652477676}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 662042445532891240, guid: fdd6a545a172c1b4a81b24e354f048fe, type: 3}
+        m_TargetAssemblyTypeName: Assets.Scripts.XRExtension.TeleportationManager,
+          Assembly-CSharp
+        m_MethodName: GoToPreviousPoint
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &4501563311909375098
 GameObject:
   m_ObjectHideFlags: 0

@@ -31,7 +31,7 @@ namespace Assets.Scripts
             var spawn = FindObjectOfType<Spawn>();
             if (spawn != null)
             {
-                //this.transform.position = spawn.gameObject.transform.position;
+                this.transform.position = spawn.gameObject.transform.position;
             }
             
         }

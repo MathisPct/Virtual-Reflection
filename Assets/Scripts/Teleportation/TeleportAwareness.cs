@@ -21,7 +21,7 @@ namespace Assets.Scripts.XRExtension
         [SerializeField] private TeleportationManager teleportationManager;
 
         /// <summary>
-        /// Transform of destination
+        /// Transform of destination game object where the script is attached
         /// </summary>
         private Transform transformOfDestination;
 
@@ -29,12 +29,6 @@ namespace Assets.Scripts.XRExtension
         {
             base.Awake();
             screenFade = FindObjectOfType<Transition>();
-        }
-
-        protected override void OnSelectExited(SelectExitEventArgs args)
-        {
-            if (teleportTrigger == TeleportTrigger.OnSelectExited)
-                StartCoroutine(FadeSequence(base.OnSelectExited, args));
         }
 
         public Transform TransformOfDestination { get => transformOfDestination; set => transformOfDestination = value; }
@@ -66,36 +60,17 @@ namespace Assets.Scripts.XRExtension
                 return false;
             teleportRequest.destinationPosition = transformOfDestination.position;
             teleportRequest.destinationRotation = transformOfDestination.rotation;
-            teleportationManager.AddToHistory(GetTeleportAwarnessFromRay(raycastHit));
-            teleportationManager.TeleportationBehaviour();
-            return true;
+            TeleportAwareness destination = GetTeleportableFromRay(raycastHit);
+            teleportationManager.AddToHistory(destination);
+            teleportationManager.TeleportWithRequest(ref teleportRequest);
+            return false;
         }
 
-        private TeleportAwareness GetTeleportAwarnessFromRay(RaycastHit raycastHit)
+        private TeleportAwareness GetTeleportableFromRay(RaycastHit raycastHit)
         {
             var teleportAware = raycastHit.collider.gameObject.GetComponentInParent<TeleportAwareness>();
             return teleportAware;
         }
 
-        /// <summary>
-        /// Disable interation and fade to black (transition).
-        /// Wait, then do the teleport stuff, fade from black to transparent transition, enable interaction
-        /// </summary>
-        /// <typeparam name="T"></typeparam>
-        /// <param name="action"></param>
-        /// <param name="args"></param>
-        /// <returns></returns>
-        private IEnumerator FadeSequence<T>(UnityAction<T> action, T args)
-            where T : BaseInteractionEventArgs
-        {
-            //disable interation and fade to black transition
-            interactionManager.enabled = false;
-            screenFade.FadeIn();
-            // Wait, then do the teleport stuff, fade from black to transparent transition, enable interaction
-            yield return new WaitForSeconds(screenFade.DurationFadeIn);
-            action.Invoke(args);
-            screenFade.FadeOut();
-            interactionManager.enabled = true;
-        }
     }
 }

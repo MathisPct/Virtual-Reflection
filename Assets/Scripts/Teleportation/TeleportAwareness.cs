@@ -29,6 +29,7 @@ namespace Assets.Scripts.XRExtension
         {
             base.Awake();
             screenFade = FindObjectOfType<Transition>();
+            teleportationManager = FindObjectOfType<TeleportationManager>();
         }
 
         public Transform TransformOfDestination { get => transformOfDestination; set => transformOfDestination = value; }

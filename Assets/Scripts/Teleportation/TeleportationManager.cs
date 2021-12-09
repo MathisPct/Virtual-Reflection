@@ -1,10 +1,8 @@
 ﻿using Assets.Scripts.TeleportationManager;
-using System;
+using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using UnityEngine;
+using UnityEngine.XR.Interaction.Toolkit;
 
 namespace Assets.Scripts.XRExtension
 {
@@ -14,21 +12,60 @@ namespace Assets.Scripts.XRExtension
         /// Object where the player in teleport 
         /// Is modify when player teleport in object 
         /// </summary>
-        [SerializeField] private GameObject actualObjectPlayerTeleportIn;
+        [SerializeField] private TeleportAwareness actualObjectPlayerTeleportIn;
 
         /// <summary>
         /// Last object which received player 
         /// </summary>
-        [SerializeField] private GameObject lastObjectPlayerTeleportIn;
+        [SerializeField] private TeleportAwareness lastObjectPlayerTeleportIn;
 
-        [SerializeField]private List<GameObject> teleportableObjects;
+        [SerializeField] private List<GameObject> teleportableObjects;
 
-        public GameObject ActualObjectPlayerTeleportIn { 
-            get => actualObjectPlayerTeleportIn;
-            set
+        [SerializeField] private List<TeleportAwareness> history;
+
+        [SerializeField] private bool teleportSpawn = false;
+
+        [SerializeField] private bool teleportPrevious = false;
+
+        [SerializeField] private XRInteractionManager interactionManager;
+
+        [SerializeField] private TeleportationProvider teleportationProvider;
+
+        [SerializeField] private Transition screenFade;
+
+        void Awake()
+        {
+            history = new List<TeleportAwareness>();
+            screenFade = FindObjectOfType<Transition>();
+            interactionManager = FindObjectOfType<XRInteractionManager>();
+
+            //ADD SPAWN TO HISTORY
+            var selection = FindObjectOfType<Spawn>();
+            if (selection != null)
             {
-                lastObjectPlayerTeleportIn = actualObjectPlayerTeleportIn;
-                actualObjectPlayerTeleportIn = value;
+                history.Add(selection);
+            }
+        }
+
+        public TeleportAwareness ActualObjectPlayerTeleportIn
+        {
+            get
+            {
+                TeleportAwareness actual = null;
+                actual = history[history.Count - 1];
+                actualObjectPlayerTeleportIn = actual;
+                return actualObjectPlayerTeleportIn;
+            }
+        }
+
+        public TeleportAwareness LastObjectPlayerTeleportIn
+        {
+            get
+            {
+                TeleportAwareness previous = null;
+                if(history.Count > 1) previous = history[history.Count - 2];
+                lastObjectPlayerTeleportIn = previous;
+                return lastObjectPlayerTeleportIn;
             }
         }
 
@@ -37,21 +74,104 @@ namespace Assets.Scripts.XRExtension
         /// </summary>
         public void TeleportationBehaviour()
         {
-            Debug.Log("Actual object" + actualObjectPlayerTeleportIn);
-            Debug.Log("Last object" + lastObjectPlayerTeleportIn);
-            if (lastObjectPlayerTeleportIn!=null && IsGameObjectAwareness(lastObjectPlayerTeleportIn))
+            if (LastObjectPlayerTeleportIn?.GetComponent<IAwareness>() != null)
+                LastObjectPlayerTeleportIn.GetComponent<IAwareness>().BehaviourWhenPlayerExit();
+            if (ActualObjectPlayerTeleportIn?.GetComponent<IAwareness>() != null)
+                ActualObjectPlayerTeleportIn.GetComponent<IAwareness>().BehaviourWhenPlayerEnter();
+        }
+
+        public void AddToHistory(TeleportAwareness teleportAwareness)
+        {
+            if (teleportAwareness != null) history.Add(teleportAwareness);
+        }
+
+        public void GoToPreviousPoint()
+        {
+            if (history.Count - 1 > 0)
             {
-                lastObjectPlayerTeleportIn?.GetComponent<IAwareness>().BehaviourWhenPlayerExit();
-            }
-            if (IsGameObjectAwareness(actualObjectPlayerTeleportIn))
-            {
-                actualObjectPlayerTeleportIn.GetComponent<IAwareness>().BehaviourWhenPlayerEnter();
+                
+                IAwareness oldActual = history[history.Count - 1].GetComponent<IAwareness>();
+
+                //delete actual element where player is
+                history.RemoveAt(history.Count - 1);
+
+                if (oldActual != null)
+                {
+                    //behaviour triggered when the player move from the old current teleportable
+                    oldActual.BehaviourWhenPlayerExit();
+                }
+
+                TeleportToGameObject(ActualObjectPlayerTeleportIn.gameObject);
             }
         }
 
-        private bool IsGameObjectAwareness(GameObject gameObject)
+        /// <summary>
+        /// Allow player to teleport back to the spawn
+        /// </summary>
+        public void GoToSpawn()
         {
-            return teleportableObjects.Contains(gameObject);
+            while (history.Count != 1)
+            {
+                GoToPreviousPoint();
+            }
+        }
+
+        private void Update()
+        {
+            if (teleportSpawn)
+            {
+                GoToSpawn();
+                teleportSpawn = false;
+            }
+
+            if (teleportPrevious)
+            {
+                GoToPreviousPoint();
+                teleportPrevious = false;
+            }
+        }
+
+        /// <summary>
+        /// Allow to teleport player into game object
+        /// </summary>
+        /// <param name="gameObject">Game object where player is teleport</param>
+        public void TeleportToGameObject(GameObject gameObject)
+        {
+            TeleportRequest teleportRequest = new TeleportRequest();
+            teleportRequest.destinationPosition = gameObject.transform.position;
+            teleportRequest.destinationRotation = gameObject.transform.rotation;
+            teleportRequest.matchOrientation = MatchOrientation.TargetUpAndForward;
+            StartCoroutine(TeleportSequence(teleportRequest));
+        }
+
+        public void TeleportWithRequest(ref TeleportRequest teleportRequest)
+        {
+            StartCoroutine(TeleportSequence(teleportRequest));
+        }
+
+
+        /// <summary>
+        /// Disable interation and fade to black (transition).
+        /// Wait, then do the teleport stuff, fade from black to transparent transition, enable interaction
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="action"></param>
+        /// <param name="args"></param>
+        /// <returns></returns>
+        private IEnumerator TeleportSequence(TeleportRequest request)
+
+        {
+            //disable interation and fade to black transition
+            interactionManager.enabled = false;
+            screenFade.FadeIn();
+            // Wait, then do the teleport stuff, fade from black to transparent transition, enable interaction
+            yield return new WaitForSeconds(screenFade.DurationFadeIn);
+
+            this.TeleportationBehaviour();
+            //ajout aux teleportations à effectuer
+            this.teleportationProvider.QueueTeleportRequest(request);
+            screenFade.FadeOut();
+            interactionManager.enabled = true;
         }
     }
 }

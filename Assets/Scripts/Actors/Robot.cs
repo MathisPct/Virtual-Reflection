@@ -12,7 +12,6 @@ public class Robot : MonoBehaviour, IAwareness, IControlable
 {
     [SerializeField] private GameObject robotGameObject;
     [SerializeField] private Camera headPlayer;
-    [SerializeField] private TeleportationManager teleportationManager;
     [SerializeField] private float speedMovement = 2f;
     private CharacterController controller;
     private Vector3 vectorMovement;

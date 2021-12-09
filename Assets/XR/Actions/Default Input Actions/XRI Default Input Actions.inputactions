@@ -180,6 +180,17 @@
                     "isPartOfComposite": false
                 },
                 {
+                    "name": "",
+                    "id": "cae60449-b10d-4b44-8cb3-996787647b2c",
+                    "path": "<Keyboard>/#(e)",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "UI Press",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
                     "name": "Quaternion Fallback",
                     "id": "61466a56-4ee4-47b1-aa6a-4806de1de5f2",
                     "path": "QuaternionFallback",
@@ -348,6 +359,17 @@
                     "name": "",
                     "id": "e96cfa84-b972-4215-8650-3d22121635ce",
                     "path": "<Keyboard>/#(c)",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Select",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "dae49243-7875-4e3f-9b00-4adbc8876848",
+                    "path": "<ViveController>{LeftHand}/triggerPressed",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -832,6 +854,17 @@
                 },
                 {
                     "name": "",
+                    "id": "b9d44e59-2127-49c0-a71e-bcebe788238a",
+                    "path": "<Keyboard>/#(e)",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "UI Press",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "d6c08c3d-3d41-4695-994d-1ac9016a5a9e",
                     "path": "<XRController>{RightHand}/Primary2DAxis",
                     "interactions": "Sector(directions=12,sweepBehavior=1),Sector(directions=2,sweepBehavior=2)",
@@ -980,30 +1013,8 @@
             "bindings": [
                 {
                     "name": "",
-                    "id": "7b05ea26-e834-4e7b-ba34-e4a42b5905d3",
-                    "path": "<Keyboard>/#(m)",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Toggle",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "210d0600-4531-4e3e-b481-d71a0733dbe9",
                     "path": "<ViveController>/triggerPressed",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Toggle",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "7162c148-26b9-4712-bc09-ed68ef914f2b",
-                    "path": "",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -1081,6 +1092,44 @@
                     "action": "Movement",
                     "isComposite": false,
                     "isPartOfComposite": true
+                }
+            ]
+        },
+        {
+            "name": "UI",
+            "id": "04269513-56e6-41c5-a5d3-6901af57a626",
+            "actions": [
+                {
+                    "name": "OpenMenu",
+                    "type": "Button",
+                    "id": "c6355336-b823-4ba6-81ce-6c546730e349",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "b5733bff-4c09-44bd-b4fd-731bf78f3af3",
+                    "path": "<Keyboard>/#(l)",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "OpenMenu",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "c0ff9cff-95de-40f9-ab19-56a67a9aadbc",
+                    "path": "<ViveController>/menu",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "OpenMenu",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 }
             ]
         }

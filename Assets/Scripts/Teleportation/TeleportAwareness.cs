@@ -23,7 +23,7 @@ namespace Assets.Scripts.XRExtension
         /// <summary>
         /// Transform of destination game object where the script is attached
         /// </summary>
-        private Transform transformOfDestination;
+        [SerializeField] private Transform transformOfDestination;
 
         private void Awake()
         {

@@ -71,59 +71,15 @@
                     "isPartOfComposite": true
                 },
                 {
-                    "name": "2D Vector",
-                    "id": "30de4a1c-4324-45f9-bfdc-f3dcd34479e7",
-                    "path": "2DVector",
+                    "name": "",
+                    "id": "cfeba886-130a-4af9-a106-280cc1188e25",
+                    "path": "<ViveController>{RightHand}/trackpad",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
                     "action": "Movement",
-                    "isComposite": true,
+                    "isComposite": false,
                     "isPartOfComposite": false
-                },
-                {
-                    "name": "up",
-                    "id": "a2ee7216-35b6-406e-b055-7f4b896f38df",
-                    "path": "<ViveController>/trackpad/x",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Movement",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "down",
-                    "id": "448e8293-574b-4193-8227-f9c88387dbfd",
-                    "path": "<ViveController>/trackpad/y",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Movement",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "left",
-                    "id": "23e270bc-9287-47ab-83ae-ba15be5fc803",
-                    "path": "<ViveController>/trackpad/x",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Movement",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "right",
-                    "id": "74c2749e-c40e-4bb3-a463-b7d02a8e434b",
-                    "path": "<ViveController>/trackpad/x",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Movement",
-                    "isComposite": false,
-                    "isPartOfComposite": true
                 }
             ]
         }

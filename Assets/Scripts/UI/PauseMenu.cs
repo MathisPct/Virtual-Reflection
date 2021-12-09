@@ -1,16 +1,19 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 
 public class PauseMenu : MonoBehaviour
 {
     private static bool menuIsOpen = false;
 
-    [SerializeField] private GameObject pauseMenuUI;
+    [SerializeField] private Canvas pauseMenuUI;
 
     [SerializeField] private InputAction openMenu;
     [Space][SerializeField] private InputActionAsset menuControl;
+
+    [SerializeField] private changeScene changeScene;
 
 
     public void Awake()
@@ -48,16 +51,22 @@ public class PauseMenu : MonoBehaviour
 
     public void Resume()
     {
-        pauseMenuUI.SetActive(false);
-        Time.timeScale = 1f;
+        pauseMenuUI.enabled = false;
+        //Time.timeScale = 1f;
         menuIsOpen = false;
+        ResetSelection();
+        changeScene.LoadScene("Menu");
     }
 
     public void Pause()
     {
-        pauseMenuUI.SetActive(true);
-        Time.timeScale = 0f;
+        pauseMenuUI.enabled = true;
+        //Time.timeScale = 0f;
         menuIsOpen = true;
     }
 
+    private void ResetSelection()
+    {
+        EventSystem.current.GetComponent<EventSystem>().SetSelectedGameObject(null);
+    }
 }

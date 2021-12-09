@@ -1452,6 +1452,10 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
+    - target: {fileID: 6019786523064633313, guid: 29b927194f1d5a84aae0e9f10d8e5720, type: 3}
+      propertyPath: m_PresetInfoIsWorld
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6019786523064633314, guid: 29b927194f1d5a84aae0e9f10d8e5720, type: 3}
       propertyPath: m_Name
       value: PauseMenu
@@ -1460,13 +1464,17 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 315026967}
+    - target: {fileID: 6019786523064633326, guid: 29b927194f1d5a84aae0e9f10d8e5720, type: 3}
+      propertyPath: m_RenderMode
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6019786523064633327, guid: 29b927194f1d5a84aae0e9f10d8e5720, type: 3}
       propertyPath: m_Pivot.x
-      value: 0.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6019786523064633327, guid: 29b927194f1d5a84aae0e9f10d8e5720, type: 3}
       propertyPath: m_Pivot.y
-      value: 0.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6019786523064633327, guid: 29b927194f1d5a84aae0e9f10d8e5720, type: 3}
       propertyPath: m_RootOrder
@@ -1490,11 +1498,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6019786523064633327, guid: 29b927194f1d5a84aae0e9f10d8e5720, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 2096.6665
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6019786523064633327, guid: 29b927194f1d5a84aae0e9f10d8e5720, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 1959.9999
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6019786523064633327, guid: 29b927194f1d5a84aae0e9f10d8e5720, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6019786523064633327, guid: 29b927194f1d5a84aae0e9f10d8e5720, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6019786523064633327, guid: 29b927194f1d5a84aae0e9f10d8e5720, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6019786523064633327, guid: 29b927194f1d5a84aae0e9f10d8e5720, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1506,7 +1526,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6019786523064633327, guid: 29b927194f1d5a84aae0e9f10d8e5720, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 1.11
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6019786523064633327, guid: 29b927194f1d5a84aae0e9f10d8e5720, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1530,7 +1550,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6019786523064633327, guid: 29b927194f1d5a84aae0e9f10d8e5720, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 1.04
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6019786523064633327, guid: 29b927194f1d5a84aae0e9f10d8e5720, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x

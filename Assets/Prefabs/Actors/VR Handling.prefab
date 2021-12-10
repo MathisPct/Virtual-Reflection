@@ -131,6 +131,7 @@ MonoBehaviour:
   rigVR: {fileID: 8587126630984067078}
   joystickInput: {fileID: -1600926360853177854, guid: 5fcfbd90ce4f7744a82c3dda8fb6b406, type: 3}
   robot: {fileID: 0}
+  controlable: {fileID: 0}
 --- !u!1 &8587126631151513832
 GameObject:
   m_ObjectHideFlags: 0

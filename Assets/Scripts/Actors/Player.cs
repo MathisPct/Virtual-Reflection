@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using UnityEngine.XR.Interaction.Toolkit;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.XR.Interaction.Toolkit;
 
 namespace Assets.Scripts
 {
@@ -17,13 +12,28 @@ namespace Assets.Scripts
         [SerializeField] private XRRig rigVR;
         [SerializeField] private InputActionReference joystickInput;
         [SerializeField] private Robot robot;
-        private Vector3 direction;
-        private bool controlRobot = false;
+        private Vector3 joystickDirection;
+        private bool controlInteractable = false;
+
+        [SerializeField] private ControlableInteractable controlable;
+
+        public ControlableInteractable Controlable
+        {
+            get => controlable;
+            set
+            {
+                controlable = value;
+                if(value != null)
+                {
+                    controlable.OnControl += CanMoveInteractable;
+                    controlable.OnDiscontrol += CantMoveInteractable;
+                }
+            }
+        }
 
         void Awake()
         {
-            robot.OnControl += CanMoveRobot;
-            robot.OnDiscontrol += CantMoveRobot;
+
         }
 
         private void Start()
@@ -33,6 +43,10 @@ namespace Assets.Scripts
             {
                 this.transform.position = spawn.gameObject.transform.position;
                 this.transform.rotation = spawn.gameObject.transform.rotation;
+                Debug.Log("TELEPORTED TO SPAWN");
+            } else
+            {
+                Debug.Log("SPAWN NOT FOUND");
             }
             
         }
@@ -40,41 +54,35 @@ namespace Assets.Scripts
         public void InputMovementRobot(InputAction.CallbackContext callbackContext)
         {
             Vector2 directionAction = callbackContext.ReadValue<Vector2>();
-            direction = new Vector3(directionAction.x, 0, directionAction.y);
-            ApplyMovementToRobot();
+            joystickDirection = new Vector3(directionAction.x, 0, directionAction.y);
+            ApplyMovementToInteractable();
         }
 
-        public void CanMoveRobot()
+        public void CanMoveInteractable()
         {
-            Debug.Log("CanMove in robot");
-            controlRobot = true;
+            Debug.Log("CanMove in interactable");
+            controlInteractable = true;
             joystickInput.action.started += InputMovementRobot;
             joystickInput.action.canceled += InputMovementRobot;
         }
 
-        private void ApplyMovementToRobot()
+        public void CantMoveInteractable()
         {
-            robot.VectorMovement = direction;
-        }
-
-        public void CantMoveRobot()
-        {
-            controlRobot = false;
+            controlInteractable = false;
             joystickInput.action.started -= InputMovementRobot;
             joystickInput.action.canceled -= InputMovementRobot;
+            controlable = null;
         }
 
-        private void SamePositionAsRobot()
+        private void ApplyMovementToInteractable()
         {
-            rigVR.transform.position = robot.transform.TransformPoint(0, 0, 0);
+            Controlable.VectorMovement = joystickDirection;
         }
 
         public void Update()
         {
-            if (controlRobot)
-            {
-                SamePositionAsRobot();
-            }
+
         }
+
     }
 }

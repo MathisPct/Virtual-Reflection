@@ -12,12 +12,16 @@ using UnityEngine.XR.Interaction.Toolkit;
 public class ControlableInteractable : XRBaseInteractable, IAwareness, IControlable
 {
     private float speedMovement = 1f;
+    private float speedRotation = 50f;
     [SerializeField] private XRBaseInteractor leftInteractor;
     [SerializeField] private XRBaseInteractor rightInteractor;
-    private CharacterController controller;
+
+    [SerializeField] private GameObject rotatingPart;
 
     private Vector3 vectorMovement;
+    private Vector3 vectorRotation;
     public Vector3 VectorMovement { get => vectorMovement; set => vectorMovement = value; }
+    public Vector3 VectorRotation { get => vectorRotation; set => vectorRotation = value; }
 
     /// <summary>
     /// Robot can move when player move
@@ -72,14 +76,17 @@ public class ControlableInteractable : XRBaseInteractable, IAwareness, IControla
 
     public void Move()
     {
+        //Stuff to move
         float x = VectorMovement.x * speedMovement * Time.deltaTime;
         float z = VectorMovement.z * speedMovement * Time.deltaTime;
-        this.transform.Translate(z, 0, x, Space.Self);
+        this.transform.Translate(x, 0, z, Space.Self);
     }
 
     private void Rotate()
     {
         //Stuff to rotate
+        float y = VectorRotation.x * speedRotation * Time.deltaTime;
+        rotatingPart.transform.Rotate(0, y, 0, Space.World);
     }
 
     public void BehaviourWhenPlayerEnter()

@@ -10,9 +10,13 @@ namespace Assets.Scripts
         /// Rig where player is contain
         /// </summary>
         [SerializeField] private XRRig rigVR;
-        [SerializeField] private InputActionReference joystickInput;
+        [SerializeField] private InputActionReference joystickMouvementInput;
+        [SerializeField] private InputActionReference joystickRotateInput;
         [SerializeField] private Robot robot;
-        private Vector3 joystickDirection;
+
+        private Vector3 joystickMouvement;
+        private Vector3 joystickRotation;
+
         private bool controlInteractable = false;
 
         [SerializeField] private ControlableInteractable controlable;
@@ -26,7 +30,9 @@ namespace Assets.Scripts
                 if(value != null)
                 {
                     controlable.OnControl += CanMoveInteractable;
+                    controlable.OnControl += CanRotateInteractable;
                     controlable.OnDiscontrol += CantMoveInteractable;
+                    controlable.OnDiscontrol += CantRotateInteractable;
                 }
             }
         }
@@ -54,29 +60,57 @@ namespace Assets.Scripts
         public void InputMovementRobot(InputAction.CallbackContext callbackContext)
         {
             Vector2 directionAction = callbackContext.ReadValue<Vector2>();
-            joystickDirection = new Vector3(directionAction.x, 0, directionAction.y);
+            joystickMouvement = new Vector3(directionAction.x, 0, directionAction.y);
             ApplyMovementToInteractable();
+        }
+
+        public void InputRotateRobot(InputAction.CallbackContext callbackContext)
+        {
+            Vector2 rotateAction = callbackContext.ReadValue<Vector2>();
+            joystickRotation = new Vector3(rotateAction.x, 0, rotateAction.y);
+            ApplyRotationToInteractable();
+        }
+
+        public void CanRotateInteractable()
+        {
+            Debug.Log("CanRotate interactable");
+            controlInteractable = true;
+            joystickRotateInput.action.started += InputRotateRobot;
+            joystickRotateInput.action.canceled += InputRotateRobot;
+        }
+
+        public void CantRotateInteractable()
+        {
+            controlInteractable = false;
+            joystickRotateInput.action.started -= InputRotateRobot;
+            joystickRotateInput.action.canceled -= InputRotateRobot;
+            controlable = null;
         }
 
         public void CanMoveInteractable()
         {
             Debug.Log("CanMove in interactable");
             controlInteractable = true;
-            joystickInput.action.started += InputMovementRobot;
-            joystickInput.action.canceled += InputMovementRobot;
+            joystickMouvementInput.action.started += InputMovementRobot;
+            joystickMouvementInput.action.canceled += InputMovementRobot;
         }
 
         public void CantMoveInteractable()
         {
             controlInteractable = false;
-            joystickInput.action.started -= InputMovementRobot;
-            joystickInput.action.canceled -= InputMovementRobot;
+            joystickMouvementInput.action.started -= InputMovementRobot;
+            joystickMouvementInput.action.canceled -= InputMovementRobot;
             controlable = null;
         }
 
         private void ApplyMovementToInteractable()
         {
-            Controlable.VectorMovement = joystickDirection;
+            Controlable.VectorMovement = joystickMouvement;
+        }
+
+        private void ApplyRotationToInteractable()
+        {
+            Controlable.VectorRotation = joystickRotation;
         }
 
         public void Update()

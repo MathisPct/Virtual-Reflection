@@ -2071,6 +2071,10 @@ PrefabInstance:
       propertyPath: m_InvalidColorGradient.m_NumColorKeys
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 8587126632320317099, guid: 0fd5c99d0d1b45747a661d55bc9ae0ef, type: 3}
+      propertyPath: m_ModelPrefab
+      value: 
+      objectReference: {fileID: 7274482320942279360, guid: a4733bc67f7fb6d43a96999ce2864edf, type: 3}
     - target: {fileID: 8587126632388661421, guid: 0fd5c99d0d1b45747a661d55bc9ae0ef, type: 3}
       propertyPath: m_ValidColorGradient.atime0
       value: 0

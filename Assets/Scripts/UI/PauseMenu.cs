@@ -55,7 +55,7 @@ public class PauseMenu : MonoBehaviour
         //Time.timeScale = 1f;
         menuIsOpen = false;
         ResetSelection();
-        changeScene.LoadScene("Menu");
+        changeScene.LoadScene("PauseMenu");
     }
 
     public void Pause()

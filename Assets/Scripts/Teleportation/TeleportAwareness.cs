@@ -16,8 +16,6 @@ namespace Assets.Scripts.XRExtension
     public class TeleportAwareness : BaseTeleportationInteractable
     {
 
-        [SerializeField] private Transition screenFade;
-
         [SerializeField] private TeleportationManager teleportationManager;
 
         /// <summary>
@@ -28,7 +26,6 @@ namespace Assets.Scripts.XRExtension
         private void Awake()
         {
             base.Awake();
-            screenFade = FindObjectOfType<Transition>();
             teleportationManager = FindObjectOfType<TeleportationManager>();
         }
 

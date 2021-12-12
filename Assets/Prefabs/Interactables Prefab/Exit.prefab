@@ -1688,8 +1688,8 @@ GameObject:
   m_Component:
   - component: {fileID: 8718802997665895696}
   - component: {fileID: 5512799840235991}
-  - component: {fileID: 6722165595039059292}
   - component: {fileID: 885139688335520719}
+  - component: {fileID: 1867871112479229512}
   m_Layer: 0
   m_Name: Exit
   m_TagString: Untagged
@@ -1736,7 +1736,7 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &6722165595039059292
+--- !u!114 &885139688335520719
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1745,12 +1745,25 @@ MonoBehaviour:
   m_GameObject: {fileID: 4924638080547439576}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 41b09037f81f6484891a6b8ab8ca9e3d, type: 3}
+  m_Script: {fileID: 11500000, guid: 9d2af83e1fa70a0458f7764bf8d9eb4b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 0}
+  roomToExit: {fileID: 0}
+--- !u!114 &1867871112479229512
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4924638080547439576}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 326f5ff8bbedc74478bfadd8e7a4ba70, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_InteractionManager: {fileID: 0}
-  m_Colliders:
-  - {fileID: 8211121525030905523}
+  m_Colliders: []
   m_InteractionLayerMask:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -1806,21 +1819,12 @@ MonoBehaviour:
   m_OnDeactivate:
     m_PersistentCalls:
       m_Calls: []
-  nextLevelName: 
---- !u!114 &885139688335520719
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4924638080547439576}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9d2af83e1fa70a0458f7764bf8d9eb4b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isOpen: 0
-  animator: {fileID: 0}
+  m_TeleportationProvider: {fileID: 0}
+  m_MatchOrientation: 0
+  m_TeleportTrigger: 0
+  teleportationManager: {fileID: 0}
+  transformOfDestination: {fileID: 8718802997665895696}
+  nextLevelName: Menu
 --- !u!1 &5082953183770739404
 GameObject:
   m_ObjectHideFlags: 0

@@ -11,13 +11,10 @@ public class Room : MonoBehaviour
     [SerializeField] private List<Puzzle> puzzles = new List<Puzzle>();
     [SerializeField] private IShadable emissiveLightShading;
 
-
-    private bool isVisited;
     public bool isUnlocked;
     #endregion
 
     #region propreties
-    public bool IsVisited { get; set; }
     public bool IsUnlocked
     {
         get

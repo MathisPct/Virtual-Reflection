@@ -2,57 +2,21 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Openable : MonoBehaviour, IOpenable, IStartable, IAwakable
+public abstract class Openable : MonoBehaviour, IOpenable
 {
-    [SerializeField] private bool isOpen = false;
-    [SerializeField] private List<Puzzle> puzzles = new List<Puzzle>();
-    [SerializeField] protected Animator animator = null;
+    private bool isOpen = false;
+    [SerializeField] protected Animator animator;
 
-    void Awake()
-    {
-        OnAwake();
-    }
+    public virtual bool OpeningCondition{ get; }
 
-    void Start()
+    protected void Awake()
     {
-        OnStart();
+        animator = GetComponent<Animator>();
     }
 
     void Update()
     {
-        CheckInputs();
-    }
-
-    private void CheckInputs()
-    {
-        if (ArePuzzlesSolved(puzzles))
-        {
-            if (!isOpen)
-            {
-                Open();
-            }
-                
-        }
-        else
-        {
-            if (isOpen)
-            {
-                Close();
-            }
-        }       
-    }
-
-    protected bool ArePuzzlesSolved(List<Puzzle> puzzles)
-    {
-        bool puzzlesSolved = true;
-        foreach(Puzzle puzzle in puzzles)
-        {
-            if (!puzzle.IsPuzzleSolved)
-            {
-                puzzlesSolved = false;
-            }
-        }
-        return puzzlesSolved;
+        OpenableBehaviour();
     }
 
     public virtual void Open()
@@ -67,13 +31,22 @@ public class Openable : MonoBehaviour, IOpenable, IStartable, IAwakable
         animator.Play("Close", 0, 0.0f);
     }
 
-    public void OnAwake()
+    public void OpenableBehaviour()
     {
-        animator = GetComponent<Animator>();
-    }
+        if (OpeningCondition)
+        {
+            if (!isOpen)
+            {
+                Open();
+            }
 
-    public void OnStart()
-    {
-        isOpen = false;  
+        }
+        else
+        {
+            if (isOpen)
+            {
+                Close();
+            }
+        }
     }
 }

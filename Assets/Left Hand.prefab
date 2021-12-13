@@ -65,6 +65,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   handType: 0
+  animator: {fileID: 0}
+  activeAnimation:
+    m_Name: Active Animation
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 5c91b7d0-4f69-4a73-a67c-a228490a97ca
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+  animControl: {fileID: 0}
 --- !u!1001 &5228541710949175033
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -116,6 +126,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -4242482846685892375, guid: 3b2eff4a12c304b469c04fd0bb46c067, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 833a75730432eed44af0010b254ca7f4, type: 2}
     - target: {fileID: 919132149155446097, guid: 3b2eff4a12c304b469c04fd0bb46c067, type: 3}
       propertyPath: m_Name
       value: Hand

@@ -105,12 +105,14 @@ namespace Assets.Scripts
 
         private void ApplyMovementToInteractable()
         {
-            Controlable.VectorMovement = joystickMouvement;
+            if(controlable != null)
+                Controlable.VectorMovement = joystickMouvement;
         }
 
         private void ApplyRotationToInteractable()
         {
-            Controlable.VectorRotation = joystickRotation;
+            if (controlable != null)
+                Controlable.VectorRotation = joystickRotation;
         }
 
         public void Update()

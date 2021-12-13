@@ -11,8 +11,8 @@ using UnityEngine.XR.Interaction.Toolkit;
 
 public class ControlableInteractable : XRBaseInteractable, IAwareness, IControlable
 {
-    private float speedMovement = 1f;
-    private float speedRotation = 50f;
+    private float speedMovement = 0.5f;
+    private float speedRotation = 25f;
     [SerializeField] private XRBaseInteractor leftInteractor;
     [SerializeField] private XRBaseInteractor rightInteractor;
 
@@ -102,6 +102,7 @@ public class ControlableInteractable : XRBaseInteractable, IAwareness, IControla
         Debug.Log("Player can't move controlable");
         OnDiscontrol?.Invoke();
         vectorMovement = Vector3.zero;
+        vectorRotation = Vector3.zero;
         canMoveWhenPlayerMove = false;
         canRotateWhenPlayerRotate = false;
     }

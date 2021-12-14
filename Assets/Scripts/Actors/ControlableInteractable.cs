@@ -47,7 +47,7 @@ public class ControlableInteractable : XRBaseInteractable, IAwareness, IControla
             Rotate();
         }
     }
-
+    /*
     protected override void OnHoverEntered(HoverEnterEventArgs args)
     {
         base.OnHoverEntered(args);
@@ -55,10 +55,33 @@ public class ControlableInteractable : XRBaseInteractable, IAwareness, IControla
         MapCorrectInteractor(args.interactor);
         BehaviourWhenPlayerEnter();
     }
+    */
 
+    protected override void OnSelectEntered(SelectEnterEventArgs args)
+    {
+        base.OnSelectEntered(args);
+        FindPlayer().Controlable = this;
+        MapCorrectInteractor(args.interactor);
+        BehaviourWhenPlayerEnter();
+    }
+
+    /*
     protected override void OnHoverExited(HoverExitEventArgs args)
     {
         base.OnHoverExited(args);
+        UnmapCorrectInterractor(args.interactor);
+
+        //seulement si l'autre interactor que celui là est null
+        if (GetOppositeInteractor(args.interactor) == null)
+        {
+            BehaviourWhenPlayerExit();
+        }
+    }
+    */
+
+    protected override void OnSelectExited(SelectExitEventArgs args)
+    {
+        base.OnSelectExited(args);
         UnmapCorrectInterractor(args.interactor);
 
         //seulement si l'autre interactor que celui là est null

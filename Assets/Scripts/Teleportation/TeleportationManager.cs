@@ -39,6 +39,13 @@ namespace Assets.Scripts.XRExtension
             screenFade = FindObjectOfType<Transition>();
             interactionManager = FindObjectOfType<XRInteractionManager>();
 
+            //FIND TELEPORTATION PROVIDER
+            var tProvider = FindObjectOfType<TeleportationProvider>();
+            if (tProvider != null)
+            {
+                this.teleportationProvider = tProvider;
+            }
+
             //ADD SPAWN TO HISTORY
             var selection = FindObjectOfType<Spawn>();
             if (selection != null)

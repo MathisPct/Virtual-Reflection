@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7779149015190959039}
   - component: {fileID: 4204428124872772202}
   m_Layer: 0
-  m_Name: teleportReticle
+  m_Name: Supreme Reticle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -218,8 +218,8 @@ ParticleSystem:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7399187903702698529}
   serializedVersion: 7
-  lengthInSec: 1
-  simulationSpeed: 0.38
+  lengthInSec: 5.97
+  simulationSpeed: 0.1
   stopAction: 0
   cullingMode: 0
   ringBufferMode: 0
@@ -462,7 +462,7 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0.1
+      scalar: 0.18
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -924,7 +924,7 @@ ParticleSystem:
     sphericalDirectionAmount: 0
     randomPositionAmount: 0
     radius:
-      value: 1
+      value: 1.68
       mode: 0
       spread: 0
       speed:
@@ -1043,7 +1043,7 @@ ParticleSystem:
     rateOverTime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 200
+      scalar: 2000
       minScalar: 10
       maxCurve:
         serializedVersion: 2
@@ -2869,7 +2869,7 @@ ParticleSystem:
     strength:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 2.57
+      scalar: 15.77
       minScalar: 1
       maxCurve:
         serializedVersion: 2

@@ -147,7 +147,7 @@
                 {
                     "name": "",
                     "id": "918f29d1-8611-4c4e-8eaf-867b024a3ee0",
-                    "path": "<XRController>{RightHand}/trackpad",
+                    "path": "<ViveController>{LeftHand}/trackpad",
                     "interactions": "",
                     "processors": "",
                     "groups": "",

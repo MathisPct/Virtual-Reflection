@@ -165,6 +165,14 @@
                     "expectedControlType": "Vector2",
                     "processors": "",
                     "interactions": ""
+                },
+                {
+                    "name": "Index Hand",
+                    "type": "PassThrough",
+                    "id": "ee053f8b-a52f-4db8-9180-fa045335becd",
+                    "expectedControlType": "Analog",
+                    "processors": "",
+                    "interactions": ""
                 }
             ],
             "bindings": [
@@ -530,6 +538,17 @@
                     "action": "Translate Anchor",
                     "isComposite": false,
                     "isPartOfComposite": true
+                },
+                {
+                    "name": "",
+                    "id": "681eea29-269e-4457-95c5-4c9173b42fff",
+                    "path": "<XRInputV1::HTC::HTCViveControllerOpenXR>{LeftHand}/trigger",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Index Hand",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 }
             ]
         },

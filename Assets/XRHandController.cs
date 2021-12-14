@@ -14,18 +14,19 @@ public class XRHandController : MonoBehaviour
 {
     public HandType handType;
 
-    public Animator animator;
+    [SerializeField] private Animator animator;
 
     [SerializeField] private InputAction activeAnimation;
     [Space] [SerializeField] private InputActionAsset animControl;
 
-    private float threeFingersValue;
 
     public void Awake()
     {
+        animator = this.GetComponent<Animator>();
+
         var gaucheActionMap = animControl.FindActionMap("XRI LeftHand");
 
-        activeAnimation = gaucheActionMap.FindAction("Select");
+        activeAnimation = gaucheActionMap.FindAction("Index Hand");
 
         activeAnimation.performed += AnimateHand;
         activeAnimation.canceled += AnimateHand;
@@ -35,7 +36,7 @@ public class XRHandController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        animator = this.GetComponent<Animator>();
+        
     }
 
     // Update is called once per frame
@@ -46,7 +47,11 @@ public class XRHandController : MonoBehaviour
 
 
     void AnimateHand (InputAction.CallbackContext context)
-    {        
-        animator.SetFloat("ThreeFingers", 1);
+    {
+        float value = context.ReadValue<float>();
+        Debug.Log("VALUE TO MAP: " + value);
+        value = Mathf.Clamp(value, 0, 1);
+        animator.SetFloat("Blend", value);
+        //animator.Play("Blend Tree", 0);
     }
 }

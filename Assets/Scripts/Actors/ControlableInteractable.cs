@@ -20,6 +20,8 @@ public class ControlableInteractable : XRBaseInteractable, IAwareness, IControla
     [SerializeField] private XRBaseInteractor rightInteractor;
     [SerializeField] private GameObject rotatingPart;
 
+    [SerializeField] private List<GameObject> selectionWitnesses;
+
     private Vector3 vectorMovement;
     private Vector3 vectorRotation;
     public Vector3 VectorMovement { get => vectorMovement; set => vectorMovement = value; }
@@ -39,7 +41,12 @@ public class ControlableInteractable : XRBaseInteractable, IAwareness, IControla
 
     private void Awake()
     {
-        initialHeigth = this.gameObject.transform.position.y;
+        initialHeigth = this.gameObject.transform.position.y;      
+    }
+
+    private void Start()
+    {
+        SetSelectionWitnessVisibility(false);
     }
 
     void Update()
@@ -141,6 +148,7 @@ public class ControlableInteractable : XRBaseInteractable, IAwareness, IControla
         Debug.Log("Player can move controlable");
         canMoveWhenPlayerMove = true;
         canRotateWhenPlayerRotate = true;
+        SetSelectionWitnessVisibility(true);
         OnControl?.Invoke();
     }
 
@@ -152,6 +160,7 @@ public class ControlableInteractable : XRBaseInteractable, IAwareness, IControla
         vectorRotation = Vector3.zero;
         canMoveWhenPlayerMove = false;
         canRotateWhenPlayerRotate = false;
+        SetSelectionWitnessVisibility(false);
     }
 
     public string InteractorName(XRBaseInteractor interactorToGuess)
@@ -199,5 +208,16 @@ public class ControlableInteractable : XRBaseInteractable, IAwareness, IControla
                 rightInteractor = null;
                 break;
         }
+    }
+
+    private void SetSelectionWitnessVisibility(bool isVisible)
+    {
+        if (selectionWitnesses != null)
+        {
+            foreach (GameObject witness in selectionWitnesses)
+            {
+                witness.SetActive(isVisible);
+            }
+        }     
     }
 }

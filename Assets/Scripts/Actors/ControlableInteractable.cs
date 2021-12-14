@@ -13,9 +13,11 @@ public class ControlableInteractable : XRBaseInteractable, IAwareness, IControla
 {
     private float speedMovement = 0.5f;
     private float speedRotation = 25f;
+
+    private float initialHeigth;
+
     [SerializeField] private XRBaseInteractor leftInteractor;
     [SerializeField] private XRBaseInteractor rightInteractor;
-
     [SerializeField] private GameObject rotatingPart;
 
     private Vector3 vectorMovement;
@@ -35,8 +37,14 @@ public class ControlableInteractable : XRBaseInteractable, IAwareness, IControla
     public event ControlHandler OnControl;
     public event DiscontrolHandler OnDiscontrol;
 
+    private void Awake()
+    {
+        initialHeigth = this.gameObject.transform.position.y;
+    }
+
     void Update()
     {
+
         if (canMoveWhenPlayerMove)
         {
             Move();
@@ -99,10 +107,26 @@ public class ControlableInteractable : XRBaseInteractable, IAwareness, IControla
 
     public void Move()
     {
-        //Stuff to move
+        //Previous logic
+        /*
         float x = VectorMovement.x * speedMovement * Time.deltaTime;
         float z = VectorMovement.z * speedMovement * Time.deltaTime;
         this.transform.Translate(x, 0, z, Space.Self);
+        */
+
+        //Camera logic
+        float x = VectorMovement.x * speedMovement * Time.deltaTime;
+        float z = VectorMovement.z * speedMovement * Time.deltaTime;
+
+        if (Math.Abs(z) >= Math.Abs(x))
+        {
+            this.transform.Translate(Camera.main.transform.forward * 100 * z * Time.deltaTime, Space.World);
+            this.transform.Translate(0, (initialHeigth - this.transform.position.y), 0);
+        }
+        else
+        {
+            this.transform.Translate(Camera.main.transform.right * 100 * x * Time.deltaTime, Space.World);
+        }
     }
 
     private void Rotate()

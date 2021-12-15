@@ -12,7 +12,7 @@ using UnityEngine.XR.Interaction.Toolkit;
 public class ControlableInteractable : XRBaseInteractable, IAwareness, IControlable
 {
     private float speedMovement = 0.5f;
-    private float speedRotation = 25f;
+    private float speedRotation = 50f;
 
     private float initialHeigth;
 
@@ -133,6 +133,7 @@ public class ControlableInteractable : XRBaseInteractable, IAwareness, IControla
         else
         {
             this.transform.Translate(Camera.main.transform.right * 100 * x * Time.deltaTime, Space.World);
+            this.transform.Translate(0, (initialHeigth - this.transform.position.y), 0);
         }
     }
 
@@ -140,7 +141,7 @@ public class ControlableInteractable : XRBaseInteractable, IAwareness, IControla
     {
         //Stuff to rotate
         float y = VectorRotation.x * speedRotation * Time.deltaTime;
-        rotatingPart.transform.Rotate(0, y, 0, Space.World);
+        rotatingPart.transform.Rotate(0, -y, 0, Space.World);
     }
 
     public void BehaviourWhenPlayerEnter()

@@ -33,11 +33,16 @@ namespace Assets.Scripts.XRExtension
 
         [SerializeField] private Transition screenFade;
 
+        [SerializeField] private AudioSource audioSource;
+        [SerializeField] private RandomSelectionSound randomTeleportationSounds;
+
         void Awake()
         {
             history = new List<TeleportAwareness>();
             screenFade = FindObjectOfType<Transition>();
             interactionManager = FindObjectOfType<XRInteractionManager>();
+            audioSource = GetComponentInChildren<AudioSource>();
+            randomTeleportationSounds = FindObjectOfType<RandomSelectionSound>();
 
             //FIND TELEPORTATION PROVIDER
             var tProvider = FindObjectOfType<TeleportationProvider>();
@@ -143,11 +148,11 @@ namespace Assets.Scripts.XRExtension
         /// </summary>
         /// <param name="gameObject">Game object where player is teleport</param>
         public void TeleportToGameObject(GameObject gameObject)
-        {
+        {         
             TeleportRequest teleportRequest = new TeleportRequest();
             teleportRequest.destinationPosition = gameObject.transform.position;
             teleportRequest.destinationRotation = gameObject.transform.rotation;
-            teleportRequest.matchOrientation = MatchOrientation.TargetUpAndForward;
+            teleportRequest.matchOrientation = MatchOrientation.TargetUpAndForward;         
             StartCoroutine(TeleportSequence(teleportRequest));
         }
 
@@ -169,6 +174,7 @@ namespace Assets.Scripts.XRExtension
 
         {
             //disable interation and fade to black transition
+            audioSource.PlayOneShot(randomTeleportationSounds.RandomTeleportationAudioClip());
             interactionManager.enabled = false;
             screenFade.FadeIn();
             // Wait, then do the teleport stuff, fade from black to transparent transition, enable interaction

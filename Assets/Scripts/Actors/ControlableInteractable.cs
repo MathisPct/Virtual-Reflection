@@ -22,6 +22,10 @@ public class ControlableInteractable : XRBaseInteractable, IAwareness, IControla
 
     [SerializeField] private List<GameObject> selectionWitnesses;
 
+    private RandomSelectionSound randomSounds;
+
+    [SerializeField] private AudioSource audioSource;
+
     private Vector3 vectorMovement;
     private Vector3 vectorRotation;
     public Vector3 VectorMovement { get => vectorMovement; set => vectorMovement = value; }
@@ -41,7 +45,9 @@ public class ControlableInteractable : XRBaseInteractable, IAwareness, IControla
 
     private void Awake()
     {
-        initialHeigth = this.gameObject.transform.position.y;      
+        initialHeigth = this.gameObject.transform.position.y;
+        randomSounds = FindObjectOfType<RandomSelectionSound>();
+        audioSource = GetComponentInChildren<AudioSource>();
     }
 
     private void Start()
@@ -150,6 +156,7 @@ public class ControlableInteractable : XRBaseInteractable, IAwareness, IControla
         canMoveWhenPlayerMove = true;
         canRotateWhenPlayerRotate = true;
         SetSelectionWitnessVisibility(true);
+        audioSource.PlayOneShot(randomSounds.RandomObjectSelectionAudioClip());
         OnControl?.Invoke();
     }
 
@@ -162,6 +169,7 @@ public class ControlableInteractable : XRBaseInteractable, IAwareness, IControla
         canMoveWhenPlayerMove = false;
         canRotateWhenPlayerRotate = false;
         SetSelectionWitnessVisibility(false);
+        audioSource.PlayOneShot(randomSounds.RandomObjectUnselectionAudioClip());
     }
 
     public string InteractorName(XRBaseInteractor interactorToGuess)

@@ -5,7 +5,7 @@ using System;
 
 public class Laser : MonoBehaviour, ILaser
 {
-    private int maxBounces = 3;
+    private int maxBounces = 25;
     private int maxDistance = 50;
     [SerializeField] private int bounceCount = 0;
     [SerializeField] private LineRenderer laser;

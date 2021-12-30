@@ -16,6 +16,9 @@ public class ControlableInteractable : XRBaseInteractable, IAwareness, IControla
 
     private float initialHeigth;
 
+    [SerializeField] private bool isMovable = true;
+    [SerializeField] private bool isRotable = true;
+
     [SerializeField] private XRBaseInteractor leftInteractor;
     [SerializeField] private XRBaseInteractor rightInteractor;
     [SerializeField] private GameObject rotatingPart;
@@ -58,12 +61,12 @@ public class ControlableInteractable : XRBaseInteractable, IAwareness, IControla
     void Update()
     {
 
-        if (canMoveWhenPlayerMove)
+        if (canMoveWhenPlayerMove && isMovable)
         {
             Move();
         }
 
-        if (canRotateWhenPlayerRotate)
+        if (canRotateWhenPlayerRotate && isRotable)
         {
             Rotate();
         }

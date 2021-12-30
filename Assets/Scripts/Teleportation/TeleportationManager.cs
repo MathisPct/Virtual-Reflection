@@ -33,8 +33,8 @@ namespace Assets.Scripts.XRExtension
 
         [SerializeField] private Transition screenFade;
 
-        [SerializeField] private AudioSource audioSource;
-        [SerializeField] private RandomSelectionSound randomTeleportationSounds;
+        private AudioSource audioSource;
+        private RandomSelectionSound randomTeleportationSounds;
 
         void Awake()
         {

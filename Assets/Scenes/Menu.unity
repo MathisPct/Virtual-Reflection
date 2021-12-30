@@ -293,7 +293,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 969680216907140836, guid: 773af76c3b498154ab27fc071f3b7380, type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2670207509200343343, guid: 773af76c3b498154ab27fc071f3b7380, type: 3}
       propertyPath: m_Text
@@ -487,9 +487,49 @@ PrefabInstance:
       propertyPath: refCurvesControlRatioPoints.Array.data[1].array.Array.data[3].z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3199441807224140451, guid: 773af76c3b498154ab27fc071f3b7380, type: 3}
+      propertyPath: controlPoints.Array.data[0].x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3199441807224140451, guid: 773af76c3b498154ab27fc071f3b7380, type: 3}
+      propertyPath: controlPoints.Array.data[0].y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3199441807224140451, guid: 773af76c3b498154ab27fc071f3b7380, type: 3}
+      propertyPath: controlPoints.Array.data[0].z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3199441807224140451, guid: 773af76c3b498154ab27fc071f3b7380, type: 3}
+      propertyPath: controlPoints.Array.data[1].x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3199441807224140451, guid: 773af76c3b498154ab27fc071f3b7380, type: 3}
+      propertyPath: controlPoints.Array.data[1].y
+      value: 1.0000008
+      objectReference: {fileID: 0}
+    - target: {fileID: 3199441807224140451, guid: 773af76c3b498154ab27fc071f3b7380, type: 3}
+      propertyPath: controlPoints.Array.data[2].x
+      value: 1.0000038
+      objectReference: {fileID: 0}
+    - target: {fileID: 3199441807224140451, guid: 773af76c3b498154ab27fc071f3b7380, type: 3}
+      propertyPath: controlPoints.Array.data[2].y
+      value: 1.0000008
+      objectReference: {fileID: 0}
+    - target: {fileID: 3199441807224140451, guid: 773af76c3b498154ab27fc071f3b7380, type: 3}
+      propertyPath: controlPoints.Array.data[3].x
+      value: 1.0000038
+      objectReference: {fileID: 0}
+    - target: {fileID: 3199441807224140451, guid: 773af76c3b498154ab27fc071f3b7380, type: 3}
+      propertyPath: controlPoints.Array.data[3].y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3199441807224140451, guid: 773af76c3b498154ab27fc071f3b7380, type: 3}
+      propertyPath: controlPoints.Array.data[3].z
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3774125360805144362, guid: 773af76c3b498154ab27fc071f3b7380, type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 773af76c3b498154ab27fc071f3b7380, type: 3}
@@ -646,7 +686,7 @@ MonoBehaviour:
   - {x: -79.99999, y: 15, z: -21}
   - {x: -26.66667, y: 15, z: 0}
   - {x: 26.66666, y: 15, z: 0}
-  - {x: 79.999985, y: 15, z: 14.197083}
+  - {x: 79.99999, y: 15, z: -21}
 --- !u!114 &188176842 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 784858309924144421, guid: 59d17c5782ec53f49940c1f3e68ec36f, type: 3}
@@ -1199,7 +1239,7 @@ MonoBehaviour:
   - {x: -25, y: -24.999985, z: -7.6183395}
   - {x: -8.333282, y: -25.000061, z: -4.137764}
   - {x: 8.333221, y: -24.999962, z: 10.662191}
-  - {x: 29.233816, y: -31.434294, z: 16.278343}
+  - {x: 29.233814, y: -31.434294, z: 16.278343}
 --- !u!1001 &491412829
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1744,10 +1784,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   controlPoints:
-  - {x: -25, y: 25.000015, z: -7.6183395}
-  - {x: -8.333282, y: 25.000061, z: -4.137764}
+  - {x: -25, y: 25.000017, z: -7.6183395}
+  - {x: -8.333282, y: 25.00006, z: -4.137764}
   - {x: 8.333221, y: 25.00009, z: 4.248667}
-  - {x: 25.000029, y: 25.000013, z: 9.4572115}
+  - {x: 25.00003, y: 25.000011, z: 9.4572115}
 --- !u!1001 &752395152
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2355,7 +2395,7 @@ MonoBehaviour:
   - {x: -79.99999, y: -15, z: -21}
   - {x: -26.66667, y: -15, z: 0}
   - {x: 26.66666, y: -15, z: 0}
-  - {x: 79.999985, y: -14.999999, z: 10.75324}
+  - {x: 79.99999, y: -15, z: -21}
 --- !u!1001 &1250898828
 PrefabInstance:
   m_ObjectHideFlags: 0

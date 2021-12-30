@@ -1,0 +1,56 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &7019819235477135404
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4816698141595716503}
+  - component: {fileID: 8513408760526824592}
+  m_Layer: 0
+  m_Name: RandomSounds
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4816698141595716503
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7019819235477135404}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8513408760526824592
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7019819235477135404}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3c6bb06b7984a1f4683b726b858965f9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  selectAudioClips:
+  - {fileID: 8300000, guid: da36bc7e6f53a954cb70da3e33cca058, type: 3}
+  unselectAudioClips:
+  - {fileID: 8300000, guid: ecbf9ac23a3aa454fb1254f1c21b738e, type: 3}
+  teleportAudioClips:
+  - {fileID: 8300000, guid: 588258ba61c1aa34bb112f3c7d9d371c, type: 3}
+  - {fileID: 8300000, guid: ee3ef82ead1a6e344ad523496041fb57, type: 3}
+  - {fileID: 8300000, guid: 46a0cf115c39fe8459d870eb0c42fee8, type: 3}
+  - {fileID: 8300000, guid: b8ad32c21800ff24698422a6070b2d36, type: 3}
+  puzzleActivationAudiClips:
+  - {fileID: 8300000, guid: c5112d96ed238b5428647805275531b9, type: 3}

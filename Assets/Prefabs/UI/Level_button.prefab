@@ -112,7 +112,7 @@ RectTransform:
   m_Children:
   - {fileID: 2670207509200343342}
   - {fileID: 969680216907140836}
-  - {fileID: 3774125360805144362}
+  - {fileID: 2780722018945956203}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -234,21 +234,21 @@ MonoBehaviour:
   refCUIGraphic: {fileID: 0}
   refCurves:
   - {fileID: 4089284569499813645}
-  - {fileID: 3199441807224140451}
+  - {fileID: 6277877518123375343}
   refCurvesControlRatioPoints:
   - array:
     - {x: 0.000000047683717, y: 0, z: -21}
     - {x: 0.3333333, y: 0, z: 0}
     - {x: 0.6666666, y: 0, z: 0}
-    - {x: 0.9999999, y: 0.000000031789146, z: 10.75324}
+    - {x: 0.9999999, y: 0.00000006357829, z: -21}
   - array:
     - {x: 0.000000047683717, y: 1, z: -21}
     - {x: 0.3333333, y: 1, z: 0}
     - {x: 0.6666666, y: 1, z: 0}
-    - {x: 0.9999999, y: 1, z: 14.197083}
+    - {x: 0.9999999, y: 1, z: -21}
   cornerPosRatio: {x: 0.023781395, y: 0.0775678}
   oriCornerPosRatio: {x: 0.03125, y: 0.16666667}
---- !u!1 &5522415962393798929
+--- !u!1 &7249011791829370087
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -256,22 +256,22 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 3774125360805144362}
-  - component: {fileID: 3199441807224140451}
+  - component: {fileID: 2780722018945956203}
+  - component: {fileID: 6277877518123375343}
   m_Layer: 0
-  m_Name: TopRefCurve
+  m_Name: TopRefCurveLevel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &3774125360805144362
+--- !u!4 &2780722018945956203
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5522415962393798929}
+  m_GameObject: {fileID: 7249011791829370087}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -279,13 +279,13 @@ Transform:
   m_Father: {fileID: 2670207510443927483}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3199441807224140451
+--- !u!114 &6277877518123375343
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5522415962393798929}
+  m_GameObject: {fileID: 7249011791829370087}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 983a3e151cd916d4faf111dc86266574, type: 3}
@@ -295,7 +295,7 @@ MonoBehaviour:
   - {x: -79.99999, y: 15, z: -21}
   - {x: -26.66667, y: 15, z: 0}
   - {x: 26.66666, y: 15, z: 0}
-  - {x: 79.999985, y: 15, z: 14.197083}
+  - {x: 79.999985, y: 15, z: -21}
 --- !u!1 &8762160201327769078
 GameObject:
   m_ObjectHideFlags: 0
@@ -307,7 +307,7 @@ GameObject:
   - component: {fileID: 969680216907140836}
   - component: {fileID: 4089284569499813645}
   m_Layer: 0
-  m_Name: BottomRefCurve
+  m_Name: BottomRefCurveLevel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -343,4 +343,4 @@ MonoBehaviour:
   - {x: -79.99999, y: -15, z: -21}
   - {x: -26.66667, y: -15, z: 0}
   - {x: 26.66666, y: -15, z: 0}
-  - {x: 79.999985, y: -14.999999, z: 10.75324}
+  - {x: 79.999985, y: -14.999998, z: -21}

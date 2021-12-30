@@ -553,7 +553,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4089284569499813645, guid: 773af76c3b498154ab27fc071f3b7380, type: 3}
       propertyPath: controlPoints.Array.data[3].z
-      value: -21
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5708195205507607894, guid: 773af76c3b498154ab27fc071f3b7380, type: 3}
       propertyPath: m_RootOrder
@@ -565,7 +565,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6277877518123375343, guid: 773af76c3b498154ab27fc071f3b7380, type: 3}
       propertyPath: controlPoints.Array.data[3].z
-      value: -21
+      value: -2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 773af76c3b498154ab27fc071f3b7380, type: 3}
@@ -3770,7 +3770,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4089284569499813645, guid: 773af76c3b498154ab27fc071f3b7380, type: 3}
       propertyPath: controlPoints.Array.data[3].z
-      value: -21
+      value: -2
       objectReference: {fileID: 0}
     - target: {fileID: 5708195205507607894, guid: 773af76c3b498154ab27fc071f3b7380, type: 3}
       propertyPath: m_RootOrder
@@ -3782,7 +3782,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6277877518123375343, guid: 773af76c3b498154ab27fc071f3b7380, type: 3}
       propertyPath: controlPoints.Array.data[3].z
-      value: -21
+      value: -2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 773af76c3b498154ab27fc071f3b7380, type: 3}

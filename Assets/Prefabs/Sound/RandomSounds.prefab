@@ -52,3 +52,5 @@ MonoBehaviour:
   - {fileID: 8300000, guid: ee3ef82ead1a6e344ad523496041fb57, type: 3}
   - {fileID: 8300000, guid: 46a0cf115c39fe8459d870eb0c42fee8, type: 3}
   - {fileID: 8300000, guid: b8ad32c21800ff24698422a6070b2d36, type: 3}
+  puzzleActivationAudiClips:
+  - {fileID: 8300000, guid: c5112d96ed238b5428647805275531b9, type: 3}

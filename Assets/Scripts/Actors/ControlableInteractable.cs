@@ -12,7 +12,7 @@ using UnityEngine.XR.Interaction.Toolkit;
 public class ControlableInteractable : XRBaseInteractable, IAwareness, IControlable
 {
     private float speedMovement = 0.5f;
-    private float speedRotation = 50f;
+    private float speedRotation = 25f;
 
     private float initialHeigth;
 

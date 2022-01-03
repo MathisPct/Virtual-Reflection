@@ -113,7 +113,7 @@ namespace Assets.Scripts.XRExtension
                     oldActual.BehaviourWhenPlayerExit();
                 }
 
-                TeleportToGameObject(ActualObjectPlayerTeleportIn.gameObject);
+                TeleportToGameObject(ActualObjectPlayerTeleportIn.TransformOfDestination);
             }
         }
 
@@ -147,11 +147,11 @@ namespace Assets.Scripts.XRExtension
         /// Allow to teleport player into game object
         /// </summary>
         /// <param name="gameObject">Game object where player is teleport</param>
-        public void TeleportToGameObject(GameObject gameObject)
+        public void TeleportToGameObject(Transform destination)
         {         
             TeleportRequest teleportRequest = new TeleportRequest();
-            teleportRequest.destinationPosition = gameObject.transform.position;
-            teleportRequest.destinationRotation = gameObject.transform.rotation;
+            teleportRequest.destinationPosition = destination.position;
+            teleportRequest.destinationRotation = destination.rotation;
             teleportRequest.matchOrientation = MatchOrientation.TargetUpAndForward;         
             StartCoroutine(TeleportSequence(teleportRequest));
         }

@@ -12,9 +12,12 @@ using UnityEngine.XR.Interaction.Toolkit;
 public class ControlableInteractable : XRBaseInteractable, IAwareness, IControlable
 {
     private float speedMovement = 0.5f;
-    private float speedRotation = 50f;
+    private float speedRotation = 25f;
 
     private float initialHeigth;
+
+    [SerializeField] private bool isMovable = true;
+    [SerializeField] private bool isRotable = true;
 
     [SerializeField] private XRBaseInteractor leftInteractor;
     [SerializeField] private XRBaseInteractor rightInteractor;
@@ -58,12 +61,12 @@ public class ControlableInteractable : XRBaseInteractable, IAwareness, IControla
     void Update()
     {
 
-        if (canMoveWhenPlayerMove)
+        if (canMoveWhenPlayerMove && isMovable)
         {
             Move();
         }
 
-        if (canRotateWhenPlayerRotate)
+        if (canRotateWhenPlayerRotate && isRotable)
         {
             Rotate();
         }

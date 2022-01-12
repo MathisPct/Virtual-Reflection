@@ -7,6 +7,7 @@ public class RandomSelectionSound : MonoBehaviour
     [SerializeField] private List<AudioClip> selectAudioClips;
     [SerializeField] private List<AudioClip> unselectAudioClips;
     [SerializeField] private List<AudioClip> teleportAudioClips;
+    [SerializeField] private List<AudioClip> puzzleActivationAudiClips;
 
     public AudioClip RandomObjectSelectionAudioClip()
     {
@@ -23,5 +24,11 @@ public class RandomSelectionSound : MonoBehaviour
     {
         int random = Random.Range(0, teleportAudioClips.Count);
         return teleportAudioClips.ToArray()[random];
+    }
+
+    public AudioClip RandomPuzzleActivationAudioClip()
+    {
+        int random = Random.Range(0, puzzleActivationAudiClips.Count);
+        return puzzleActivationAudiClips.ToArray()[random];
     }
 }
